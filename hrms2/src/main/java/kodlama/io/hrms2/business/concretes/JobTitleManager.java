@@ -1,14 +1,13 @@
-package kodlama.io.hrms.business.concretes;
+package kodlama.io.hrms2.business.concretes;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kodlama.io.hrms.business.abstracts.JobTitleService;
-import kodlama.io.hrms.dataAccess.abstracts.JobTitleDao;
-import kodlama.io.hrms.entities.concretes.JobTitle;
-
+import kodlama.io.hrms2.business.abstracts.JobTitleService;
+import kodlama.io.hrms2.dataAccess.abstracts.JobTitleDao;
+import kodlama.io.hrms2.entities.concretes.JobTitle;
 
 @Service
 public class JobTitleManager implements JobTitleService {

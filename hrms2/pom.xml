@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>kodlama.io</groupId>
-	<artifactId>hrms</artifactId>
+	<artifactId>hrms2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>hrms</name>
+	<name>hrms2</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>

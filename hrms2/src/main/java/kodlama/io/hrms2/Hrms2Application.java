@@ -1,13 +1,13 @@
-package kodlama.io.hrms;
+package kodlama.io.hrms2;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class HrmsApplication {
+public class Hrms2Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(HrmsApplication.class, args);
+		SpringApplication.run(Hrms2Application.class, args);
 	}
 
 }

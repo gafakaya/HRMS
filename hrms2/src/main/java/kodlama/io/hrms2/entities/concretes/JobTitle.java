@@ -1,4 +1,4 @@
-package kodlama.io.hrms.entities.concretes;
+package kodlama.io.hrms2.entities.concretes;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,11 +17,11 @@ public class JobTitle {
 	@GeneratedValue
 	@Column(name="id")
 	private int id;
-	
+
 	@Column(name="title")
 	private String title;
 	
-	public JobTitle(){
+	public JobTitle() {
 		
 	}
 
@@ -30,5 +30,4 @@ public class JobTitle {
 		this.id = id;
 		this.title = title;
 	}
-
 }
