@@ -6,6 +6,6 @@ import com.kaya.hrms.entities.concretes.JobTitle;
 
 public interface JobTitleDao extends JpaRepository<JobTitle, Integer> {
 
-	
+//	TODO: Query...
 	
 }

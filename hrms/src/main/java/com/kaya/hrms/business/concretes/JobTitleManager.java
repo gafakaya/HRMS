@@ -3,6 +3,7 @@ package com.kaya.hrms.business.concretes;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kaya.hrms.business.abstracts.JobTitleService;
@@ -21,6 +22,11 @@ public class JobTitleManager implements JobTitleService {
 
 	private JobTitleDao jobTitleDao;
 	
+	@Autowired
+	public JobTitleManager(JobTitleDao jobTitleDao) {
+		this.jobTitleDao = jobTitleDao;
+	}
+
 	@Override
 	public DataResult<List<JobTitle>> getAll() {
 		List<JobTitle> result = this.jobTitleDao.findAll();
@@ -65,5 +71,7 @@ public class JobTitleManager implements JobTitleService {
 		jobTitle.setTitle(jobTitleName);
 		return new SuccessResult(Messages.JOB_TITLE_UPDATED);
 	}
+	
+// TODO: Business...
 	
 }
