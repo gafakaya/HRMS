@@ -88,15 +88,14 @@ public class JobSeekerManager implements JobSeekerService {
 	@Override
 	public Result checkUserExists(String email, String nationalityId) {
 		
-//		TODO: fix the bug...
 		boolean userEmailExists = this.jobSeekerDao
 				.findByEmail(email)
 				.isPresent();
 		boolean userNationalityIdExists = this.jobSeekerDao
 				.findByNationalityId(nationalityId)
 				.isPresent();
-		if (userEmailExists && userNationalityIdExists) {
-			new ErrorResult(Messages.ERROR_JOB_SEEKER_EXISTS);
+		if (userEmailExists || userNationalityIdExists) {
+			return new ErrorResult(Messages.ERROR_JOB_SEEKER_EXISTS);
 		}
 		
 		return new SuccessResult();
