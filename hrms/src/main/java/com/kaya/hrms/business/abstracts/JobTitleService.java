@@ -9,8 +9,10 @@ import com.kaya.hrms.entities.concretes.JobTitle;
 public interface JobTitleService {
 	
 	DataResult<List<JobTitle>> getAll();
-	
+
 	DataResult<JobTitle> getById(int jobTitleId);
+	
+	DataResult<JobTitle> getByName(String jobTitleName);
 
 	Result add(JobTitle jobTitle);
 	

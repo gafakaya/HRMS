@@ -45,12 +45,17 @@ public class JobTitleManager implements JobTitleService {
 		boolean jobTitlesExists = jobTitle.isPresent();
 		
 		if (!jobTitlesExists) {
-			return new ErrorDataResult<JobTitle>(Messages.JOB_TITLE_NOT_FOUND);
+			return new ErrorDataResult<JobTitle>(Messages.ERROR_JOB_TITLE_NOT_FOUND);
 		}
 		
 		JobTitle result = jobTitle.get();		
 		
-		return new SuccessDataResult<JobTitle>(result, Messages.JOB_TITLES_LISTED_BYID);
+		return new SuccessDataResult<JobTitle>(result, Messages.JOB_TITLE_LISTED_BYID);
+	}
+	
+	public DataResult<JobTitle> getByName(String jobTitleName) {
+		JobTitle result = this.jobTitleDao.findByTitle(jobTitleName);
+		return new SuccessDataResult<JobTitle>(result);
 	}
 
 	@Override
