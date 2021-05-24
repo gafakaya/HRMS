@@ -12,6 +12,4 @@ public interface UserDao<T extends User, ID> extends JpaRepository<T, ID> {
 
 	Optional<T> findByEmail(String email);
 	
-	Optional<T> findById(String id);
-	
 }
