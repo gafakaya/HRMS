@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import com.kaya.hrms.entities.concretes.EmailActivationCode;
 
-@Repository
 public interface EmailActivationCodeDao extends JpaRepository<EmailActivationCode, Integer> {
 
     Optional<EmailActivationCode>  findByIdAndEmailActivationCode(

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import com.kaya.hrms.entities.concretes.User;
 
-@Repository
 public interface UserDao<T extends User, ID> extends JpaRepository<T, ID> {
 
 	Optional<T> findByEmail(String email);

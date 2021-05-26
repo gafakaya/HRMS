@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import com.kaya.hrms.entities.concretes.JobSeeker;
 
-@Repository
 public interface JobSeekerDao extends UserDao<JobSeeker, Integer> {
 	
 	Optional<JobSeeker> findByNationalityId(String nationalityId);

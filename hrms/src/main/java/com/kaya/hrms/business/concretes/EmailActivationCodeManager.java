@@ -48,20 +48,7 @@ public class EmailActivationCodeManager implements EmailActivationCodeService {
     public Result getById(Integer id, String activationCode) {
 //        String token = UUID.randomUUID().toString();
 
-        int leftLimit = 48; // numeral '0'
-        int rightLimit = 122; // letter 'z'
-        int targetStringLength = 32;
-        Random random = new Random();
-
-        String generatedString = random.ints(leftLimit, rightLimit + 1)
-                .filter(i -> (i <= 57 || i >= 65) && (i <= 90 || i >= 97))
-                .limit(targetStringLength)
-                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
-                .toString();
-
-
-        String token = generatedString;
-
+    	String token = generateCode();
 
         Optional<EmailActivationCode> emailActivationCodeOptional = emailActivationCodeDao.findByIdAndEmailActivationCode(id, activationCode);
         boolean isEmailActivation = emailActivationCodeOptional.isPresent();
@@ -78,6 +65,24 @@ public class EmailActivationCodeManager implements EmailActivationCodeService {
         emailActivationCodeDao.save(emailActivationCode);
         return new SuccessResult("localhost:8080/api/users/" + id + "/" + activationCode) ;
 
-//        LocalDate.now().plusDays(3);
     }
+    
+    
+    public String generateCode() {
+    	int leftLimit = 48; // numeral '0'
+        int rightLimit = 122; // letter 'z'
+        int targetStringLength = 32;
+        Random random = new Random();
+
+        String generatedString = random.ints(leftLimit, rightLimit + 1)
+                .filter(i -> (i <= 57 || i >= 65) && (i <= 90 || i >= 97))
+                .limit(targetStringLength)
+                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+                .toString();
+
+
+        String token = generatedString;
+        return token;
+    }
+    
 }
