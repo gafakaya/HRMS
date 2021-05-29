@@ -58,6 +58,7 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 				Messages.JOB_ADVERTISEMENT_SORTED_BY_ENABLE);
 	}
 
+//	TODO: Fix it
 	@Override
 	public DataResult<List<JobAdvertisement>> getByEnableAndCompany_companyName(String companyName) {
 		List<JobAdvertisement> result = this.jobAdvertisementDao

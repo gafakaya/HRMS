@@ -41,7 +41,8 @@ public class JobAdvertisementController {
 	public DataResult<List<JobAdvertisement>> getByEnableSorted() {
 		return this.jobAdvertisementManager.getByEnableSorted();
 	}
-	
+
+//	TODO: Fix it
 	@GetMapping("/getByEnableAndCompany_companyName")
 	public DataResult<List<JobAdvertisement>> getByEnableAndCompany_companyName(
 			@RequestParam("companyName") String companyName) {
