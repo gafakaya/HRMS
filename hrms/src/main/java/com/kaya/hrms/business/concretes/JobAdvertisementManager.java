@@ -97,4 +97,10 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 		return new SuccessResult();
 	}
 
+	@Override
+	public Result update(JobAdvertisement jobAdvertisemenet) {
+		this.jobAdvertisementDao.save(jobAdvertisemenet);
+		return  new SuccessResult();
+	}
+
 }

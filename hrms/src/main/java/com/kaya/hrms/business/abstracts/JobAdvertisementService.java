@@ -19,8 +19,10 @@ public interface JobAdvertisementService {
 	DataResult<List<JobAdvertisement>> getByEnableSortedDesc();
 
 	DataResult<List<JobAdvertisement>> getByEnableTrueAndCompanyName(String companyName);
-	
+
 	Result add(JobAdvertisement jobAdvertisemenet);
+	
+	Result update(JobAdvertisement jobAdvertisemenet);
 
 
 }
