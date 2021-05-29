@@ -22,7 +22,7 @@ public interface JobAdvertisementService {
 
 	Result add(JobAdvertisement jobAdvertisemenet);
 	
-	Result update(JobAdvertisement jobAdvertisemenet);
+	Result update(int jobAdvertisemenetId, JobAdvertisement jobAdvertisemenet);
 
 
 }

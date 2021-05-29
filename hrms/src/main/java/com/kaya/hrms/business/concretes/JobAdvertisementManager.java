@@ -1,5 +1,6 @@
 package com.kaya.hrms.business.concretes;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -98,8 +99,13 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 	}
 
 	@Override
-	public Result update(JobAdvertisement jobAdvertisemenet) {
-		this.jobAdvertisementDao.save(jobAdvertisemenet);
+	public Result update(int jobAdvertisemenetId, JobAdvertisement jobAdvertisemenet) {
+		JobAdvertisement result = this.jobAdvertisementDao.getById(jobAdvertisemenetId);
+		result.setEnable(jobAdvertisemenet.isEnable());
+		if(jobAdvertisemenet.getApplicaitonDateline().isBefore(LocalDate.now())) {
+			jobAdvertisemenet.setEnable(false);
+		}
+		this.jobAdvertisementDao.save(result);
 		return  new SuccessResult();
 	}
 

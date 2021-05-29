@@ -32,7 +32,6 @@ public class JobAdvertisement {
 	@Column(name="id")
 	private int id;
 	
-	
 	@Column(name="job_description")
 	private String jobDescription;
 	
