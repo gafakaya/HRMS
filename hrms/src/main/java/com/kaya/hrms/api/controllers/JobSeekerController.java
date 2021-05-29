@@ -28,5 +28,6 @@ public class JobSeekerController {
 	public DataResult<List<JobSeeker>> getAll() {
 		return this.jobSeekerService.getAll();
 	}
+	
 
 }

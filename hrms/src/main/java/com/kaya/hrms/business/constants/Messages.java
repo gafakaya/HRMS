@@ -70,4 +70,10 @@ public class Messages {
 			"Company confirmation is accepted.";
 	
 	
+	public static String CITY_LISTED = 
+			"Cities listed.";
+	public static String CITY_ADDED = 
+			"City added.";
+	
+	
 }
