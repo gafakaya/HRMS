@@ -3,6 +3,8 @@ package com.kaya.hrms.business.concretes;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -39,30 +41,51 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 	@Override
 	public DataResult<List<JobAdvertisement>> getByEnable() {
 		List<JobAdvertisement> result = this.jobAdvertisementDao
-				.findByEnable(true);
+				.getByEnableTrue();
 		return new SuccessDataResult<List<JobAdvertisement>>(
 				result,
 				Messages.JOB_ADVERTISEMENT_LISTED_BY_ENABLE);
 	}
 
+
 	@Override
-	public DataResult<List<JobAdvertisement>> getByEnableSorted() {
+	public DataResult<List<JobAdvertisement>> getByEnable(int pageNo, int pageSize) {
 		
-		Sort sort = Sort.by(Sort.Direction.DESC, "applicaitonDateline");
+		Pageable pageable = PageRequest.of(pageNo, pageSize);
 		
 		List<JobAdvertisement> result = this.jobAdvertisementDao
-				.findByEnable(sort, true);
+				.getByEnableTrue(pageable).getContent();
+		return new SuccessDataResult<List<JobAdvertisement>>(
+				result,
+				Messages.JOB_ADVERTISEMENT_PAGED_BY_ENABLE);
+	}
+
+	@Override
+	public DataResult<List<JobAdvertisement>> getByEnableSortedAsc() {
+		
+		List<JobAdvertisement> result = this.jobAdvertisementDao
+				.getByEnableTrueOrderByApplicaitonDatelineAsc();
+		
+		return new SuccessDataResult<List<JobAdvertisement>>(
+				result,
+				Messages.JOB_ADVERTISEMENT_SORTED_BY_ENABLE);
+	}
+	
+	@Override
+	public DataResult<List<JobAdvertisement>> getByEnableSortedDesc() {
+		
+		List<JobAdvertisement> result = this.jobAdvertisementDao
+				.getByEnableTrueOrderByApplicaitonDatelineDesc();
 		
 		return new SuccessDataResult<List<JobAdvertisement>>(
 				result,
 				Messages.JOB_ADVERTISEMENT_SORTED_BY_ENABLE);
 	}
 
-//	TODO: Fix it
 	@Override
-	public DataResult<List<JobAdvertisement>> getByEnableAndCompany_companyName(String companyName) {
+	public DataResult<List<JobAdvertisement>> getByEnableTrueAndCompanyName(String companyName) {
 		List<JobAdvertisement> result = this.jobAdvertisementDao
-				.findByEnableAndCompany_companyName(true, companyName);
+				.getByEnableTrueAndCompany_companyName(companyName);
 		return new SuccessDataResult<List<JobAdvertisement>>(
 				result,
 				Messages.JOB_ADVERTISEMENT_LISTED_BY_COMPANYID_ENABLE);

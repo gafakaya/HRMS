@@ -37,16 +37,27 @@ public class JobAdvertisementController {
 		return this.jobAdvertisementManager.getByEnable();
 	}
 	
-	@GetMapping("/getByEnableSorted")
-	public DataResult<List<JobAdvertisement>> getByEnableSorted() {
-		return this.jobAdvertisementManager.getByEnableSorted();
+	@GetMapping("/getByEnablePage")
+	public DataResult<List<JobAdvertisement>> getByEnable(int pageNo, int pageSize) {
+		return this.jobAdvertisementManager.getByEnable(pageNo - 1, pageSize);
+	}
+	
+	@GetMapping("/getByEnableSortedAsc")
+	public DataResult<List<JobAdvertisement>> getByEnableSortedAsc() {
+		
+		return this.jobAdvertisementManager.getByEnableSortedAsc();
+	}
+	
+	@GetMapping("/getByEnableSortedDesc")
+	public DataResult<List<JobAdvertisement>> getByEnableSortedDesc() {
+		
+		return this.jobAdvertisementManager.getByEnableSortedDesc();
 	}
 
-//	TODO: Fix it
 	@GetMapping("/getByEnableAndCompany_companyName")
 	public DataResult<List<JobAdvertisement>> getByEnableAndCompany_companyName(
 			@RequestParam("companyName") String companyName) {
-		return this.getByEnableAndCompany_companyName(companyName);
+		return this.jobAdvertisementManager.getByEnableTrueAndCompanyName(companyName);
 	}
 	
 	@PostMapping("/add")
