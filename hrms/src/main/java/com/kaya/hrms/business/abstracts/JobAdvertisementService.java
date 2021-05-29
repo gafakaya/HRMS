@@ -10,6 +10,12 @@ public interface JobAdvertisementService {
 	
 	DataResult<List<JobAdvertisement>> getAll();
 	
+	DataResult<List<JobAdvertisement>> getByEnable();
+	
+	DataResult<List<JobAdvertisement>> getByEnableSorted();
+
+	DataResult<List<JobAdvertisement>> getByEnableAndCompany_companyName(String companyName);
+	
 	Result add(JobAdvertisement jobAdvertisemenet);
 
 

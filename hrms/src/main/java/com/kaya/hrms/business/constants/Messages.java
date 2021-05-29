@@ -75,5 +75,15 @@ public class Messages {
 	public static String CITY_ADDED = 
 			"City added.";
 	
+
+	public static String JOB_ADVERTISEMENT_LISTED = 
+			"Job advertisement listed..";
+	public static String JOB_ADVERTISEMENT_LISTED_BY_ENABLE = 
+			"Job advertisement listed by enable.";
+	public static String JOB_ADVERTISEMENT_SORTED_BY_ENABLE = 
+			"Job advertisement sorted by enable and .";
+	public static String JOB_ADVERTISEMENT_LISTED_BY_COMPANYID_ENABLE = 
+			"Job advertisement listed by company id and enable.";
+	
 	
 }

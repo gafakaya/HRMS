@@ -18,7 +18,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="job_titles")
+@Table(name="job_advertisements")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -29,17 +29,6 @@ public class JobAdvertisement {
 	@Column(name="id")
 	private int id;
 	
-	@ManyToOne
-	@JoinColumn(name="company_id")
-	private Company company;
-	
-	@ManyToOne
-	@JoinColumn(name="job_title_id")
-	private JobTitle jobTitle;
-	
-	@ManyToOne
-	@JoinColumn(name="city_id")
-	private City city;
 	
 	@Column(name="job_description")
 	private String jobDescription;
@@ -62,5 +51,16 @@ public class JobAdvertisement {
 	@Column(name="enable")
 	private boolean enable;
 	
+	@ManyToOne
+	@JoinColumn(name="company_id")
+	private Company company;
+	
+	@ManyToOne
+	@JoinColumn(name="job_title_id")
+	private JobTitle jobTitle;
+	
+	@ManyToOne
+	@JoinColumn(name="city_id")
+	private City city;
 	
 }
