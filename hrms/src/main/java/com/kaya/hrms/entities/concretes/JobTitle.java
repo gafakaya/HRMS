@@ -11,6 +11,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -33,6 +34,7 @@ public class JobTitle {
 	@Column(name="title")
 	private String title;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "jobTitle")
 	private List<JobAdvertisement> jobAdvertisements;
 	
