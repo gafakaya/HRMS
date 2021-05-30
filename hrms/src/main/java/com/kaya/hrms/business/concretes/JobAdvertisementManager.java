@@ -94,16 +94,20 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 
 	@Override
 	public Result add(JobAdvertisement jobAdvertisemenet) {
+		jobAdvertisemenet.setCreatedAt(LocalDate.now());
 		this.jobAdvertisementDao.save(jobAdvertisemenet);
 		return new SuccessResult();
 	}
 
 	@Override
 	public Result update(int jobAdvertisemenetId, JobAdvertisement jobAdvertisemenet) {
+		
 		JobAdvertisement result = this.jobAdvertisementDao.getById(jobAdvertisemenetId);
+		
 		result.setEnable(jobAdvertisemenet.isEnable());
+		
 		if(jobAdvertisemenet.getApplicaitonDateline().isBefore(LocalDate.now())) {
-			jobAdvertisemenet.setEnable(false);
+			result.setEnable(false);
 		}
 		this.jobAdvertisementDao.save(result);
 		return  new SuccessResult();
