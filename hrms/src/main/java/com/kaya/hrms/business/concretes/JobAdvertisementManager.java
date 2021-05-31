@@ -16,6 +16,7 @@ import com.kaya.hrms.core.utilities.results.Result;
 import com.kaya.hrms.core.utilities.results.SuccessDataResult;
 import com.kaya.hrms.core.utilities.results.SuccessResult;
 import com.kaya.hrms.dataAccess.abstracts.JobAdvertisementDao;
+import com.kaya.hrms.entities.Dtos.JobAdvertisementWithCompanyDto;
 import com.kaya.hrms.entities.concretes.JobAdvertisement;
 
 @Service
@@ -83,6 +84,12 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 				Messages.JOB_ADVERTISEMENT_SORTED_BY_ENABLE);
 	}
 
+	@Override
+	public DataResult<List<JobAdvertisementWithCompanyDto>> getJobAdvertisementWithCompany() {
+		List<JobAdvertisementWithCompanyDto> result = this.jobAdvertisementDao.getJobAdvertisementWithCompany();
+		return new SuccessDataResult<List<JobAdvertisementWithCompanyDto>>(result);
+	}
+	
 	@Override
 	public DataResult<List<JobAdvertisement>> getByEnableTrueAndCompanyName(String companyName) {
 		List<JobAdvertisement> result = this.jobAdvertisementDao

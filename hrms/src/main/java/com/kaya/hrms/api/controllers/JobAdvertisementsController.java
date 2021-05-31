@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.kaya.hrms.business.concretes.JobAdvertisementManager;
 import com.kaya.hrms.core.utilities.results.DataResult;
 import com.kaya.hrms.core.utilities.results.Result;
+import com.kaya.hrms.entities.Dtos.JobAdvertisementWithCompanyDto;
 import com.kaya.hrms.entities.concretes.JobAdvertisement;
 
 @RestController
@@ -53,6 +54,12 @@ public class JobAdvertisementsController {
 	public DataResult<List<JobAdvertisement>> getByEnableSortedDesc() {
 		
 		return this.jobAdvertisementManager.getByEnableSortedDesc();
+	}
+	
+	@GetMapping("/getJobAdvertisementWithCompany")
+	public DataResult<List<JobAdvertisementWithCompanyDto>> getJobAdvertisementWithCompany() {
+		
+		return this.jobAdvertisementManager.getJobAdvertisementWithCompany();
 	}
 
 	@GetMapping("/getByEnableAndCompany_companyName")
