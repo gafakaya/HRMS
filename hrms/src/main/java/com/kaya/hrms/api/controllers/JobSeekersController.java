@@ -14,7 +14,7 @@ import com.kaya.hrms.core.utilities.results.Result;
 import com.kaya.hrms.entities.concretes.JobSeeker;
 
 @RestController
-@RequestMapping("api/jobseekers")
+@RequestMapping("/api/jobseekers")
 public class JobSeekersController {
 	
 	private JobSeekerService jobSeekerService;

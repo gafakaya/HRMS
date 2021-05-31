@@ -12,7 +12,7 @@ import com.kaya.hrms.entities.concretes.CompanyRegisterDto;
 import com.kaya.hrms.entities.concretes.JobSeekerRegisterDto;
 
 @RestController
-@RequestMapping("api/")
+@RequestMapping("/api/")
 public class AuthController {
 	
 	private AuthManager authManager;

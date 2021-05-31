@@ -15,7 +15,7 @@ import com.kaya.hrms.core.utilities.results.Result;
 import com.kaya.hrms.entities.concretes.City;
 
 @RestController
-@RequestMapping("api/cities")
+@RequestMapping("/api/cities")
 public class CitiesController {
 	
 	private CityService cityService;

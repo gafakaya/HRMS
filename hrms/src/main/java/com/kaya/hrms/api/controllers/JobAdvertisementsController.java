@@ -17,7 +17,7 @@ import com.kaya.hrms.core.utilities.results.Result;
 import com.kaya.hrms.entities.concretes.JobAdvertisement;
 
 @RestController
-@RequestMapping("api/jobAdvertisements")
+@RequestMapping("/api/jobAdvertisements")
 public class JobAdvertisementsController {
 	
 	private JobAdvertisementManager jobAdvertisementManager;

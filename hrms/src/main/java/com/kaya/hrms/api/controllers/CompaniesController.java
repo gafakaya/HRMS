@@ -12,7 +12,7 @@ import com.kaya.hrms.core.utilities.results.DataResult;
 import com.kaya.hrms.entities.concretes.Company;
 
 @RestController
-@RequestMapping("api/companies")
+@RequestMapping("/api/companies")
 public class CompaniesController {
 
 	private CompanyService companyService ;
