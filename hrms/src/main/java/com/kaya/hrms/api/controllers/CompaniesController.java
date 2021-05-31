@@ -13,12 +13,12 @@ import com.kaya.hrms.entities.concretes.Company;
 
 @RestController
 @RequestMapping("api/companies")
-public class CompanyController {
+public class CompaniesController {
 
 	private CompanyService companyService ;
 	
 	@Autowired
-	public CompanyController(CompanyService companyService) {
+	public CompaniesController(CompanyService companyService) {
 		this.companyService = companyService;
 	}
 

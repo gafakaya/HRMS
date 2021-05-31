@@ -16,12 +16,12 @@ import com.kaya.hrms.entities.concretes.City;
 
 @RestController
 @RequestMapping("api/cities")
-public class CityController {
+public class CitiesController {
 	
 	private CityService cityService;
 	
 	@Autowired
-	public CityController(CityService cityService) {
+	public CitiesController(CityService cityService) {
 		this.cityService = cityService;
 	}
 	

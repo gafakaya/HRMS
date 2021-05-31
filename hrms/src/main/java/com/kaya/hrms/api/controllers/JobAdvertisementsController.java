@@ -18,12 +18,12 @@ import com.kaya.hrms.entities.concretes.JobAdvertisement;
 
 @RestController
 @RequestMapping("api/jobAdvertisements")
-public class JobAdvertisementController {
+public class JobAdvertisementsController {
 	
 	private JobAdvertisementManager jobAdvertisementManager;
 
 	@Autowired
-	public JobAdvertisementController(
+	public JobAdvertisementsController(
 			JobAdvertisementManager jobAdvertisementManager) {
 		this.jobAdvertisementManager = jobAdvertisementManager;
 	}
