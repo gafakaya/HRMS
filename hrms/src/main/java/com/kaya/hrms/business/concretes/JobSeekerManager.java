@@ -2,6 +2,7 @@ package com.kaya.hrms.business.concretes;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,7 @@ import com.kaya.hrms.business.validationRules.EmailValidator;
 import com.kaya.hrms.core.adapters.MernisService;
 import com.kaya.hrms.core.utilities.business.BusinessRules;
 import com.kaya.hrms.core.utilities.results.DataResult;
+import com.kaya.hrms.core.utilities.results.ErrorDataResult;
 import com.kaya.hrms.core.utilities.results.ErrorResult;
 import com.kaya.hrms.core.utilities.results.Result;
 import com.kaya.hrms.core.utilities.results.SuccessDataResult;
@@ -44,7 +46,16 @@ public class JobSeekerManager implements JobSeekerService {
 
 	@Override
 	public DataResult<JobSeeker> getById(int jobSeekerId) {
-		return null;
+
+		Result rules = BusinessRules.Run(checkUserExistsById(jobSeekerId));
+		
+		if(rules != null) {
+			return new ErrorDataResult<JobSeeker>(rules.getMessage());
+		}
+		
+		JobSeeker result = this.jobSeekerDao.findById(jobSeekerId).get();
+		
+		return new SuccessDataResult<JobSeeker>(result, Messages.ERROR_JOB_SEEKER_NOT_FOUND);
 	}
 
 	@Override
@@ -58,7 +69,6 @@ public class JobSeekerManager implements JobSeekerService {
 		
 		Result rules = BusinessRules.Run(
 				checkUserExists(email, nationalityId),
-				EmailValidator.jobSeekerEmailValid(email),
 				this.mernisService.checkIfRealPerson(
 						firstName,
 						lastName,
@@ -81,8 +91,52 @@ public class JobSeekerManager implements JobSeekerService {
 
 	@Override
 	public Result delete(int jobSeekerId) {
-		// TODO Auto-generated method stub
+		
+		Result rules = BusinessRules.Run(checkUserExistsById(jobSeekerId));
+		
+		if(rules != null) {
+			return rules;
+		}
+		
+		this.jobSeekerDao.deleteById(jobSeekerId);
+		
+		return new SuccessResult(Messages.JOB_SEEKER_DELETED);
+	}
+
+	@Override
+	public Result update(int jobSeekerId, JobSeeker jobSeeker) {
+		
+		Result rules = BusinessRules.Run(checkUserExistsById(jobSeekerId));
+		
+		if(rules != null) {
+			return rules;
+		}
+		
+		JobSeeker result = getById(jobSeekerId).getData();
+		
+		result.setFirstName(jobSeeker.getFirstName());
+		result.setLastName(jobSeeker.getLastName());
+		result.setPassword(jobSeeker.getPassword());
+		
 		return null;
+	}
+	
+	
+	
+//	-----------------------------------------------------------------------------
+	
+	
+	public Result checkUserExistsById(int jobSeekerId) {
+		
+		Optional<JobSeeker> result = this.jobSeekerDao.findById(jobSeekerId);
+		
+		boolean isPresent = result.isPresent();
+		
+		if(!isPresent) {
+			return new ErrorResult(Messages.ERROR_JOB_SEEKER_NOT_FOUND);
+		}
+		
+		return new SuccessResult();
 	}
 	
 	@Override

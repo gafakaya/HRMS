@@ -12,10 +12,10 @@ import com.kaya.hrms.business.constants.Messages;
 import com.kaya.hrms.core.utilities.results.ErrorResult;
 import com.kaya.hrms.core.utilities.results.Result;
 import com.kaya.hrms.core.utilities.results.SuccessResult;
+import com.kaya.hrms.entities.Dtos.CompanyRegisterDto;
+import com.kaya.hrms.entities.Dtos.JobSeekerRegisterDto;
 import com.kaya.hrms.entities.concretes.Company;
-import com.kaya.hrms.entities.concretes.CompanyRegisterDto;
 import com.kaya.hrms.entities.concretes.JobSeeker;
-import com.kaya.hrms.entities.concretes.JobSeekerRegisterDto;
 
 @Service
 public class AuthManager implements AuthService {
@@ -63,16 +63,16 @@ public class AuthManager implements AuthService {
 
 	@Override
 	public Result companyRegister(CompanyRegisterDto companyDto) {
-		
-		if (companyDto.getCompanyName().equals(null) &&
-				companyDto.getWebSite().equals(null) &&
-				companyDto.getEmail().equals(null) &&
-				companyDto.getPhone().equals(null) &&
-				companyDto.getPassword().equals(null) &&
-				companyDto.getPasswordConfirm().equals(null)
-					) {
-				return new SuccessResult(Messages.ERROR_ALL_INFO_ENTERED);
-			}
+//		
+//		if (companyDto.getCompanyName().equals(null) &&
+//				companyDto.getWebSite().equals(null) &&
+//				companyDto.getEmail().equals(null) &&
+//				companyDto.getPhone().equals(null) &&
+//				companyDto.getPassword().equals(null) &&
+//				companyDto.getPasswordConfirm().equals(null)
+//					) {
+//				return new ErrorResult(Messages.ERROR_ALL_INFO_ENTERED);
+//			}
 		if (!companyDto.getPassword().equals(companyDto.getPasswordConfirm())) {
 			return new ErrorResult(Messages.ERROR_PASSWORD_CONFIRM);
 		}

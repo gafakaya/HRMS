@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,10 +28,18 @@ public abstract class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
+	
 	@Column(name="email")
+	@Email
+	@NotBlank
+	@NotNull
 	private String email;
+	
 	@Column(name="password")
+	@NotBlank
+	@NotNull
 	private String password;
+	
 	@Column(name="created_at")
 	private LocalDate createdAt;
 	

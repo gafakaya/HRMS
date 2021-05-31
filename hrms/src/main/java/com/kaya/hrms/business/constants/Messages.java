@@ -87,5 +87,8 @@ public class Messages {
 	public static String JOB_ADVERTISEMENT_PAGED_BY_ENABLE =
 			"Job advertisement paged by enable.";
 	
+	public static String ERROR_VALIDATION = 
+			"Validation errors.";
+	
 	
 }

@@ -16,7 +16,7 @@ public interface JobSeekerService {
 	
 	Result delete(int jobSeekerId);
 	
-//	Result update(JobSeeker jobSeeker);
+	Result update(int jobSeekerId, JobSeeker jobSeeker);
 	
 	Result checkUserExists(String email, String nationalityId);
 	

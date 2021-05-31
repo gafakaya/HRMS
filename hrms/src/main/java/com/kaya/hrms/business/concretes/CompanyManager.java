@@ -50,8 +50,7 @@ public class CompanyManager implements CompanyService {
 		String companyName = company.getCompanyName();
 		
 		Result rules = BusinessRules.Run(
-				checkCompanyExists(email),
-				EmailValidator.companyEmailValid(email, companyName)
+				checkCompanyExists(email)
 		);
 		if(rules != null) {
 			return rules;

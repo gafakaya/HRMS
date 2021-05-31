@@ -1,4 +1,4 @@
-package com.kaya.hrms.entities.concretes;
+package com.kaya.hrms.entities.Dtos;
 
 import java.time.LocalDate;
 

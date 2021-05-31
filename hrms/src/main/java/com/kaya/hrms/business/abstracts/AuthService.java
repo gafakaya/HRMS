@@ -1,8 +1,8 @@
 package com.kaya.hrms.business.abstracts;
 
 import com.kaya.hrms.core.utilities.results.Result;
-import com.kaya.hrms.entities.concretes.CompanyRegisterDto;
-import com.kaya.hrms.entities.concretes.JobSeekerRegisterDto;
+import com.kaya.hrms.entities.Dtos.CompanyRegisterDto;
+import com.kaya.hrms.entities.Dtos.JobSeekerRegisterDto;
 
 public interface AuthService {
 
