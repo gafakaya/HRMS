@@ -29,7 +29,5 @@ public interface JobAdvertisementDao extends JpaRepository<JobAdvertisement, Int
 			+ "Inner join j.company c "
 			+ "Inner join j.city cty")
 	List<JobAdvertisementWithCompanyDto> getJobAdvertisementWithCompany();
-	
-//	FROM job_positions,sector_positions,company WHERE job_positions.sector_position_id=sector_positions.id and job_positions.company_id=company.id group by job_positions.id,company.company_name,job_positions.person_count,job_positions.job_application_end_time,job_positions.job_application_start_time,sector_positions.position_name
-	
+
 }
