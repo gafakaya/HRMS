@@ -89,6 +89,8 @@ public class Messages {
 	
 	public static String ERROR_VALIDATION = 
 			"Validation errors.";
+	public static String JOB_ADVERTISEMENT_DTO_LISTED = 
+			"Job advertisement dto listed.";
 	
 	
 }

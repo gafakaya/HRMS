@@ -1,11 +1,15 @@
 package com.kaya.hrms.entities.concretes;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.kaya.hrms.core.entities.User;
 
 import lombok.AllArgsConstructor;
@@ -17,6 +21,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "job_seekers")
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobSeekerSchoolDepartments"})
 public class JobSeeker extends User {
 
 	@Column(name="first_name")
@@ -47,5 +52,9 @@ public class JobSeeker extends User {
 		this.dayOfBirth = dayOfBirth;
 		this.isConfirm = isConfirm;
 	}
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "jobSeeker")
+	private List<JobSeekerSchoolDepartment> jobSeekerSchoolDepartments;
 	
 }

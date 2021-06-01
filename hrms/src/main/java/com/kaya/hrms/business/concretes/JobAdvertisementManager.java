@@ -87,7 +87,9 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 	@Override
 	public DataResult<List<JobAdvertisementWithCompanyDto>> getJobAdvertisementWithCompany() {
 		List<JobAdvertisementWithCompanyDto> result = this.jobAdvertisementDao.getJobAdvertisementWithCompany();
-		return new SuccessDataResult<List<JobAdvertisementWithCompanyDto>>(result);
+		return new SuccessDataResult<List<JobAdvertisementWithCompanyDto>>(
+				result, 
+				Messages.JOB_ADVERTISEMENT_DTO_LISTED);
 	}
 	
 	@Override
@@ -119,5 +121,8 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 		this.jobAdvertisementDao.save(result);
 		return  new SuccessResult();
 	}
+		
+	
+	
 
 }

@@ -15,6 +15,7 @@ import org.hibernate.annotations.ManyToAny;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
