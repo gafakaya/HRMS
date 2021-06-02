@@ -36,7 +36,7 @@ public class JobSeekerSchoolDepartmentManager implements JobSeekerSchoolDepartme
 	}
 
 	@Override
-	public DataResult<List<JobSeekerSchoolDepartment>> getByJobSeeker_jobSeekerIdOrderByDateOfGraduation(
+	public DataResult<List<JobSeekerSchoolDepartment>> getByJobSeeker_jobSeekerIdOrderByDateOfGraduationDesc(
 			int jobSeekerId) {
 		List<JobSeekerSchoolDepartment> result = this.jobSeekerSchoolDepartmentDao
 				.getByJobSeeker_idOrderByDateOfGraduationDesc(jobSeekerId);
