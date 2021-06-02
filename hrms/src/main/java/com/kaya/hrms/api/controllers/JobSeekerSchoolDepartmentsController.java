@@ -39,7 +39,7 @@ public class JobSeekerSchoolDepartmentsController {
 	@GetMapping("/getByJobSeeker_jobSeekerIdOrderByDateOfGraduation")
 	public DataResult<List<JobSeekerSchoolDepartment>> getByJobSeeker_jobSeekerIdOrderByDateOfGraduation(
 			@RequestParam int jobSeekerId) {
-		return this.jobSeekerSchoolDepartmentService.getByJobSeeker_jobSeekerIdOrderByDateOfGraduation(jobSeekerId);
+		return this.jobSeekerSchoolDepartmentService.getByJobSeeker_jobSeekerIdOrderByDateOfGraduationDesc(jobSeekerId);
 	}
 
 }
