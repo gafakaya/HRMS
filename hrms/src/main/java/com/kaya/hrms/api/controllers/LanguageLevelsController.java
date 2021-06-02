@@ -15,7 +15,7 @@ import com.kaya.hrms.core.utilities.results.Result;
 import com.kaya.hrms.entities.concretes.LanguageLevel;
 
 @RestController
-@RequestMapping("api/languageLevelsController")
+@RequestMapping("/api/languageLevelsController")
 public class LanguageLevelsController {
 	
 	private LanguageLevelService languageLevelService;
@@ -24,7 +24,7 @@ public class LanguageLevelsController {
 	public LanguageLevelsController(LanguageLevelService languageLevelService) {
 		this.languageLevelService = languageLevelService;
 	}
-	// Deneme 2
+	
 	@GetMapping("/getAll")
 	public DataResult<List<LanguageLevel>> getAll() {
 		return this.languageLevelService.getAll();

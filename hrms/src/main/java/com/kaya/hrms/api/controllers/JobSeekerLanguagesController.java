@@ -15,7 +15,7 @@ import com.kaya.hrms.core.utilities.results.Result;
 import com.kaya.hrms.entities.concretes.JobSeekerLanguage;
 
 @RestController
-@RequestMapping("api/jobSeekerLanguagesController")
+@RequestMapping("/api/jobSeekerLanguagesController")
 public class JobSeekerLanguagesController {
 
 	private JobSeekerLanguageService jobSeekerLanguageService;

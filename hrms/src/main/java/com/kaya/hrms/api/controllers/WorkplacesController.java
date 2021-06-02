@@ -9,31 +9,30 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kaya.hrms.business.abstracts.LanguageService;
+import com.kaya.hrms.business.abstracts.WorkplaceService;
 import com.kaya.hrms.core.utilities.results.DataResult;
 import com.kaya.hrms.core.utilities.results.Result;
-import com.kaya.hrms.entities.concretes.Language;
+import com.kaya.hrms.entities.concretes.Workplace;
 
 @RestController
-@RequestMapping("/api/languagesController")
-public class LanguagesController {
-	
-	private LanguageService languageService;
+@RequestMapping("/api/workplacesController")
+public class WorkplacesController {
+
+	private WorkplaceService workplaceService;
 
 	@Autowired
-	public LanguagesController(LanguageService languageService) {
-		this.languageService = languageService;
+	public WorkplacesController(WorkplaceService workplaceService) {
+		this.workplaceService = workplaceService;
 	}
 	
 	@GetMapping("/getAll")
-	public DataResult<List<Language>> getAll() {
-		return this.languageService.getAll();
+	public DataResult<List<Workplace>> getAll() {
+		return this.workplaceService.getAll();
 	}
 	
 	@PostMapping("/add")
-	public Result add(@RequestBody Language language) {
-		return this.languageService.add(language);
+	public Result add(@RequestBody Workplace workplace) {
+		return this.workplaceService.add(workplace);
 	}
 	
-
 }
