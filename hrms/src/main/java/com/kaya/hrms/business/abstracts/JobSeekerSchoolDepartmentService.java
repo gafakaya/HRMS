@@ -11,4 +11,6 @@ public interface JobSeekerSchoolDepartmentService {
 	DataResult<List<JobSeekerSchoolDepartment>> getAll();
 	
 	Result add(JobSeekerSchoolDepartment jobSeekerSchoolDepartment);
+	
+	DataResult<List<JobSeekerSchoolDepartment>> getByJobSeeker_jobSeekerIdOrderByDateOfGraduation(int jobSeekerId);
 }

@@ -35,4 +35,12 @@ public class JobSeekerSchoolDepartmentManager implements JobSeekerSchoolDepartme
 		return new SuccessResult();
 	}
 
+	@Override
+	public DataResult<List<JobSeekerSchoolDepartment>> getByJobSeeker_jobSeekerIdOrderByDateOfGraduation(
+			int jobSeekerId) {
+		List<JobSeekerSchoolDepartment> result = this.jobSeekerSchoolDepartmentDao
+				.getByJobSeeker_idOrderByDateOfGraduationDesc(jobSeekerId);
+		return new SuccessDataResult<List<JobSeekerSchoolDepartment>>(result);
+	}
+
 }

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kaya.hrms.business.abstracts.JobSeekerSchoolDepartmentService;
@@ -35,6 +36,10 @@ public class JobSeekerSchoolDepartmentsController {
 		return this.jobSeekerSchoolDepartmentService.add(jobSeekerSchoolDepartment);
 	}
 
-	
+	@GetMapping("/getByJobSeeker_jobSeekerIdOrderByDateOfGraduation")
+	public DataResult<List<JobSeekerSchoolDepartment>> getByJobSeeker_jobSeekerIdOrderByDateOfGraduation(
+			@RequestParam int jobSeekerId) {
+		return this.jobSeekerSchoolDepartmentService.getByJobSeeker_jobSeekerIdOrderByDateOfGraduation(jobSeekerId);
+	}
 
 }
