@@ -11,8 +11,8 @@ public interface JobSeekerSchoolDepartmentDao extends JpaRepository<JobSeekerSch
 //	TODO: JobSeeker Id ye göre JobSeekerSchoolDepartment listesi getir,
 //	 ancak mezuniyet tarihine göre sıralanmış olucak.
 	
-	List<JobSeekerSchoolDepartment> getByJobSeeker_idOrderByDateOfGraduationDesc(int jobSeekerId);
+	List<JobSeekerSchoolDepartment> getByJobSeeker_idOrderByDateOfGraduationDesc(
+			int jobSeekerId);
 
-	//.:
 	
 }

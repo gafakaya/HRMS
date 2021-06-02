@@ -154,7 +154,7 @@ public class JobSeekerManager implements JobSeekerService {
 		
 		return new SuccessResult();
 	}
-	
+	//..
 	public Result checkEmailVerification(JobSeeker jobSeeker) {
 		
 		String email = jobSeeker.getEmail();
