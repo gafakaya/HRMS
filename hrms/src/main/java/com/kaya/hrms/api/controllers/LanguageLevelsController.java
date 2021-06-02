@@ -24,7 +24,7 @@ public class LanguageLevelsController {
 	public LanguageLevelsController(LanguageLevelService languageLevelService) {
 		this.languageLevelService = languageLevelService;
 	}
-	// Deneme
+	// Deneme 2
 	@GetMapping("/getAll")
 	public DataResult<List<LanguageLevel>> getAll() {
 		return this.languageLevelService.getAll();
