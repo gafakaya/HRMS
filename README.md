@@ -1,4 +1,4 @@
 # HRMS
 <h3>HRMS DATABASE</h3>
 
-![hrmsDB](https://user-images.githubusercontent.com/81460760/120463258-6581f280-c3a4-11eb-8418-081fa609ea1e.png)
+![hrmsDatabase](https://user-images.githubusercontent.com/81460760/120520335-56b73200-c3dc-11eb-9058-eb798cb77eea.png)
