@@ -27,7 +27,8 @@ import lombok.NoArgsConstructor;
 			"jobSeekerSchoolDepartments",
 			"jobSeekerLanguages",
 			"jobSeekerAbilities",
-			"jobSeekerWorkplaceTitles"})
+			"jobSeekerWorkplaceTitles",
+			"socialMedias"})
 public class JobSeeker extends User {
 
 	
@@ -71,9 +72,12 @@ public class JobSeeker extends User {
 	@JsonIgnore
 	@OneToMany(mappedBy = "jobSeeker")
 	private List<JobSeekerAbility> jobSeekerAbilities;
-	
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "jobSeeker")
 	private List<JobSeekerWorkplaceTitle> jobSeekerWorkplaceTitles ;
+	@JsonIgnore
+	@OneToMany(mappedBy = "jobSeeker")
+	private List<SocialMedia> socialMedias;
 	
 }
