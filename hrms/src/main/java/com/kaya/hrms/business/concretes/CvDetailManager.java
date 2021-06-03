@@ -1,9 +1,11 @@
 package com.kaya.hrms.business.concretes;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.kaya.hrms.business.abstracts.CvDetailService;
 import com.kaya.hrms.core.utilities.results.DataResult;
@@ -37,6 +39,11 @@ public class CvDetailManager implements CvDetailService {
 
 	@Override
 	public Result add(CvDetail cvDetail) {
+		
+//		Map<String, String> uploadResult = (Map<String, String>) this.imageUploadService.save(file).getData();
+//		
+//		cvDetail.setCvPhotoUrl(uploadResult.get("url"));
+
 		this.cvDetailDao.save(cvDetail);
 		return new SuccessResult();
 	}

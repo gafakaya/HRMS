@@ -29,7 +29,8 @@ import lombok.NoArgsConstructor;
 			"jobSeekerLanguages",
 			"jobSeekerAbilities",
 			"jobSeekerWorkplaceTitles",
-			"socialMedias"})
+			"socialMedias",
+			"jobSeekerPhotos"})
 public class JobSeeker extends User {
 
 	
@@ -85,6 +86,10 @@ public class JobSeeker extends User {
 	@JsonIgnore
 	@OneToOne(mappedBy = "jobSeeker")
 	private CvDetail cvDetail;
+	
+	@JsonIgnore
+	@OneToOne(mappedBy = "jobSeeker")
+	private JobSeekerPhoto jobSeekerPhoto;
 	
 	
 	
