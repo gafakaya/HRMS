@@ -52,11 +52,15 @@ public class CvDtoManager implements CvDtoService {
 	@Override
 	public DataResult<CvDto> getByJobSeekerId(int jobSeekerId) {
 		
+//		this.jobSeekerService.getById(jobSeekerId),
+//		this.jobSeekerSchoolDepartmentService.getByJobSeeker_jobSeekerIdOrderByDateOfGraduationDesc(jobSeekerId),
+//		this.jobSeekerWorkplaceTitleService.getByJobSeeker_id(jobSeekerId),
+//		this.jobSeekerLanguageService.getByJobSeeker_id(jobSeekerId),
+//		this.jobSeekerAbilityService.getByJobSeeker_id(jobSeekerId),
+//		this.socialMediaService.getByJobSeeker_id(jobSeekerId)
+		
 		CvDto cvDto = new CvDto(
-				this.jobSeekerService.getById(jobSeekerId),
-				this.jobSeekerSchoolDepartmentService.getByJobSeeker_jobSeekerIdOrderByDateOfGraduationDesc(jobSeekerId),
-				this.jobSeekerWorkplaceTitleService.getByJobSeeker_id(jobSeekerId),
-				this.jobSeekerLanguageService.getByJobSeeker_id(jobSeekerId),
+				
 				);
 		
 		return null;

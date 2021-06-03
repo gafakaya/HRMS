@@ -30,6 +30,12 @@ public class SocialMediaManager implements SocialMediaService {
 	}
 
 	@Override
+	public DataResult<List<SocialMedia>> getByJobSeeker_id(int jobSeekerId) {
+		List<SocialMedia> result = this.socialMediaDao.getByJobSeeker_id(jobSeekerId);
+		return new SuccessDataResult<List<SocialMedia>>(result);
+	}
+
+	@Override
 	public Result add(SocialMedia socialMedia) {
 		this.socialMediaDao.save(socialMedia);
 		return new SuccessResult();

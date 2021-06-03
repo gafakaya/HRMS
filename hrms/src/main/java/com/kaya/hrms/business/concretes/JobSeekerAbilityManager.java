@@ -30,6 +30,12 @@ public class JobSeekerAbilityManager implements JobSeekerAbilityService {
 	}
 
 	@Override
+	public DataResult<List<JobSeekerAbility>> getByJobSeeker_id(int jobSeekerId) {
+		List<JobSeekerAbility> result = this.jobSeekerAbilityDao.getByJobSeeker_id(jobSeekerId);
+		return new SuccessDataResult<List<JobSeekerAbility>>(result);
+	}
+
+	@Override
 	public Result add(JobSeekerAbility jobSeekerAbility) {
 		this.jobSeekerAbilityDao.save(jobSeekerAbility);
 		return new SuccessResult();

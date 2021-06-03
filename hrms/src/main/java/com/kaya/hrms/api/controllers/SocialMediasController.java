@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kaya.hrms.business.abstracts.SocialMediaService;
@@ -28,6 +29,11 @@ public class SocialMediasController {
 	@GetMapping("/getAll")
 	public DataResult<List<SocialMedia>> getAll() {
 		return this.socialMediaService.getAll();
+	}
+	
+	@GetMapping("/getByJobSeeker_id")
+	public DataResult<List<SocialMedia>> getByJobSeeker_id(@RequestParam int jobSeekerId) {
+		return this.socialMediaService.getByJobSeeker_id(jobSeekerId);
 	}
 	
 	@PostMapping("/add")

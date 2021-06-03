@@ -7,7 +7,12 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kaya.hrms.business.abstracts.JobSeekerAbilityService;
+import com.kaya.hrms.business.abstracts.JobSeekerLanguageService;
+import com.kaya.hrms.business.abstracts.JobSeekerSchoolDepartmentService;
 import com.kaya.hrms.business.abstracts.JobSeekerService;
+import com.kaya.hrms.business.abstracts.JobSeekerWorkplaceTitleService;
+import com.kaya.hrms.business.abstracts.SocialMediaService;
 import com.kaya.hrms.business.constants.Messages;
 import com.kaya.hrms.business.validationRules.EmailValidator;
 import com.kaya.hrms.core.adapters.MernisService;
@@ -19,6 +24,7 @@ import com.kaya.hrms.core.utilities.results.Result;
 import com.kaya.hrms.core.utilities.results.SuccessDataResult;
 import com.kaya.hrms.core.utilities.results.SuccessResult;
 import com.kaya.hrms.dataAccess.abstracts.JobSeekerDao;
+import com.kaya.hrms.entities.Dtos.CvDto;
 import com.kaya.hrms.entities.concretes.JobSeeker;
 
 @Service
@@ -27,15 +33,29 @@ public class JobSeekerManager implements JobSeekerService {
 	private JobSeekerDao jobSeekerDao;
 	private VerificationManager verificationManager;
 	private MernisService mernisService;
+	private JobSeekerWorkplaceTitleService jobSeekerWorkplaceTitleService;
+	private JobSeekerSchoolDepartmentService jobSeekerSchoolDepartmentService;
+	private JobSeekerLanguageService jobSeekerLanguageService;
+	private JobSeekerAbilityService jobSeekerAbilityService;
+	private SocialMediaService socialMediaService;
 	
-	@Autowired
 	public JobSeekerManager(
-			JobSeekerDao jobSeekerDao, 
+			JobSeekerDao jobSeekerDao,
 			VerificationManager verificationManager,
-			MernisService mernisService) {
+			MernisService mernisService, 
+			JobSeekerWorkplaceTitleService jobSeekerWorkplaceTitleService,
+			JobSeekerSchoolDepartmentService jobSeekerSchoolDepartmentService,
+			JobSeekerLanguageService jobSeekerLanguageService, 
+			JobSeekerAbilityService jobSeekerAbilityService,
+			SocialMediaService socialMediaService) {
 		this.jobSeekerDao = jobSeekerDao;
 		this.verificationManager = verificationManager;
 		this.mernisService = mernisService;
+		this.jobSeekerWorkplaceTitleService = jobSeekerWorkplaceTitleService;
+		this.jobSeekerSchoolDepartmentService = jobSeekerSchoolDepartmentService;
+		this.jobSeekerLanguageService = jobSeekerLanguageService;
+		this.jobSeekerAbilityService = jobSeekerAbilityService;
+		this.socialMediaService = socialMediaService;
 	}
 
 	@Override
@@ -56,6 +76,21 @@ public class JobSeekerManager implements JobSeekerService {
 		JobSeeker result = this.jobSeekerDao.findById(jobSeekerId).get();
 		
 		return new SuccessDataResult<JobSeeker>(result, Messages.ERROR_JOB_SEEKER_NOT_FOUND);
+	}
+
+	@Override
+	public DataResult<CvDto> getJobSeekerResumeByJobSeekerId(int jobSeekerId) {
+		
+		CvDto cvDto = new CvDto();
+		
+		cvDto.setJobSeeker(this.jobSeekerDao.getById(jobSeekerId));
+		cvDto.setJobSeekerAbilities(this.jobSeekerAbilityService.getByJobSeeker_id(jobSeekerId).getData());
+		cvDto.setJobSeekerLanguages(this.jobSeekerLanguageService.getByJobSeeker_id(jobSeekerId).getData());
+		cvDto.setJobSeekerSchoolDepartments(this.jobSeekerSchoolDepartmentService.getByJobSeeker_jobSeekerIdOrderByDateOfGraduationDesc(jobSeekerId).getData());
+		cvDto.setJobSeekerWorkplaceTitles(this.jobSeekerWorkplaceTitleService.getByJobSeeker_id(jobSeekerId).getData());
+		cvDto.setSocialMedias(this.socialMediaService.getByJobSeeker_id(jobSeekerId).getData());
+		
+		return new SuccessDataResult<CvDto>(cvDto);
 	}
 
 	@Override

@@ -32,6 +32,4 @@ public class CvDto {
 	
 	private List<SocialMedia> socialMedias;
 	
-
-	
 }
