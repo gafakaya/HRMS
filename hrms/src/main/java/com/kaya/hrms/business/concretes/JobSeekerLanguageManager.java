@@ -30,9 +30,16 @@ public class JobSeekerLanguageManager implements JobSeekerLanguageService {
 	}
 
 	@Override
+	public DataResult<List<JobSeekerLanguage>> getByJobSeeker_id(int jobSeekerId) {
+		List<JobSeekerLanguage> result = this.jobSeekerLanguageDao.getByJobSeeker_id(jobSeekerId);
+		return new SuccessDataResult<List<JobSeekerLanguage>>(result);
+	}
+	
+	@Override
 	public Result add(JobSeekerLanguage jobSeekerLanguage) {
 		this.jobSeekerLanguageDao.save(jobSeekerLanguage);
 		return new SuccessResult();
 	}
+
 
 }

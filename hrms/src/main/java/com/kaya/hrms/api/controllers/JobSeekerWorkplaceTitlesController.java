@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kaya.hrms.business.abstracts.JobSeekerWorkplaceTitleService;
@@ -28,6 +29,11 @@ public class JobSeekerWorkplaceTitlesController {
 	@GetMapping("/getAll")
 	public DataResult<List<JobSeekerWorkplaceTitle>> getAll() {
 		return this.jobSeekerWorkplaceTitleService.getAll();
+	}
+	
+	@GetMapping("/getByJobSeeker_id")
+	public DataResult<List<JobSeekerWorkplaceTitle>> getByJobSeeker_id(@RequestParam int jobSeekerId) {
+		return this.jobSeekerWorkplaceTitleService.getByJobSeeker_id(jobSeekerId);
 	}
 	
 	@PostMapping("/add")

@@ -30,6 +30,12 @@ public class JobSeekerWorkplaceTitleManager implements JobSeekerWorkplaceTitleSe
 	}
 
 	@Override
+	public DataResult<List<JobSeekerWorkplaceTitle>> getByJobSeeker_id(int jobSeekerId) {
+		List<JobSeekerWorkplaceTitle> result = this.jobSeekerWorkplaceTitleDoa.getByJobSeeker_id(jobSeekerId);
+		return new SuccessDataResult<List<JobSeekerWorkplaceTitle>>(result);
+	}
+
+	@Override
 	public Result add(JobSeekerWorkplaceTitle jobSeekerWorkplaceTitle) {
 		this.jobSeekerWorkplaceTitleDoa.save(jobSeekerWorkplaceTitle);
 		return new SuccessResult();

@@ -58,6 +58,7 @@ public class AuthManager implements AuthService {
 				jobSeekerDto.getDayOfBirth(),
 				false
 		));
+		
 		return new SuccessResult(result.getMessage());
 	}
 
