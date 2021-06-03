@@ -8,10 +8,6 @@ import com.kaya.hrms.entities.Dtos.CvDto;
 
 public interface CvDtoService {
 
-	DataResult<List<CvDto>> getAll();
-	
-	DataResult<CvDto> getByJobSeekerId(int jobSeekerId);
-
 	Result add(CvDto cvDto);
 
 }
