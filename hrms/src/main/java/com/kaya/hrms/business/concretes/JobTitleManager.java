@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.kaya.hrms.business.abstracts.JobTitleService;
 import com.kaya.hrms.business.constants.Messages;
+import com.kaya.hrms.business.constants.SystemMessages;
 import com.kaya.hrms.core.utilities.business.BusinessRules;
 import com.kaya.hrms.core.utilities.results.DataResult;
 import com.kaya.hrms.core.utilities.results.ErrorDataResult;
@@ -75,6 +76,7 @@ public class JobTitleManager implements JobTitleService {
 		JobTitle jobTitle = getById(jobTitleId).getData();
 		jobTitle.setTitle(jobTitleName);
 		return new SuccessResult(Messages.JOB_TITLE_UPDATED);
+	
 	}
 	
 // TODO: Business...

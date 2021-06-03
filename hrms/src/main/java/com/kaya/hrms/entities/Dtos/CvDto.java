@@ -3,6 +3,7 @@ package com.kaya.hrms.entities.Dtos;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.kaya.hrms.entities.concretes.CvDetail;
 import com.kaya.hrms.entities.concretes.JobSeeker;
 import com.kaya.hrms.entities.concretes.JobSeekerAbility;
 import com.kaya.hrms.entities.concretes.JobSeekerLanguage;
@@ -31,5 +32,7 @@ public class CvDto {
 	private List<JobSeekerAbility> jobSeekerAbilities;
 	
 	private List<SocialMedia> socialMedias;
+	
+	private CvDetail cvDetail;
 	
 }

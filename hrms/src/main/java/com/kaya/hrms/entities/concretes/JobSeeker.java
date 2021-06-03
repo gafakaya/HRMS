@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -75,9 +76,16 @@ public class JobSeeker extends User {
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "jobSeeker")
-	private List<JobSeekerWorkplaceTitle> jobSeekerWorkplaceTitles ;
+	private List<JobSeekerWorkplaceTitle> jobSeekerWorkplaceTitles;
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "jobSeeker")
 	private List<SocialMedia> socialMedias;
+
+	@JsonIgnore
+	@OneToOne(mappedBy = "jobSeeker")
+	private CvDetail cvDetail;
+	
+	
 	
 }

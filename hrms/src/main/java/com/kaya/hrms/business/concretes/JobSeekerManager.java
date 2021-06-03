@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kaya.hrms.business.abstracts.CvDetailService;
 import com.kaya.hrms.business.abstracts.JobSeekerAbilityService;
 import com.kaya.hrms.business.abstracts.JobSeekerLanguageService;
 import com.kaya.hrms.business.abstracts.JobSeekerSchoolDepartmentService;
@@ -38,6 +39,7 @@ public class JobSeekerManager implements JobSeekerService {
 	private JobSeekerLanguageService jobSeekerLanguageService;
 	private JobSeekerAbilityService jobSeekerAbilityService;
 	private SocialMediaService socialMediaService;
+	private CvDetailService cvDetailService;
 	
 	public JobSeekerManager(
 			JobSeekerDao jobSeekerDao,
@@ -47,7 +49,8 @@ public class JobSeekerManager implements JobSeekerService {
 			JobSeekerSchoolDepartmentService jobSeekerSchoolDepartmentService,
 			JobSeekerLanguageService jobSeekerLanguageService, 
 			JobSeekerAbilityService jobSeekerAbilityService,
-			SocialMediaService socialMediaService) {
+			SocialMediaService socialMediaService,
+			CvDetailService cvDetailService) {
 		this.jobSeekerDao = jobSeekerDao;
 		this.verificationManager = verificationManager;
 		this.mernisService = mernisService;
@@ -56,6 +59,7 @@ public class JobSeekerManager implements JobSeekerService {
 		this.jobSeekerLanguageService = jobSeekerLanguageService;
 		this.jobSeekerAbilityService = jobSeekerAbilityService;
 		this.socialMediaService = socialMediaService;
+		this.cvDetailService = cvDetailService;
 	}
 
 	@Override
@@ -75,7 +79,7 @@ public class JobSeekerManager implements JobSeekerService {
 		
 		JobSeeker result = this.jobSeekerDao.findById(jobSeekerId).get();
 		
-		return new SuccessDataResult<JobSeeker>(result, Messages.ERROR_JOB_SEEKER_NOT_FOUND);
+		return new SuccessDataResult<JobSeeker>(result, Messages.JOB_SEEKER_LISTED_BYID);
 	}
 
 	@Override
@@ -89,6 +93,7 @@ public class JobSeekerManager implements JobSeekerService {
 		cvDto.setJobSeekerSchoolDepartments(this.jobSeekerSchoolDepartmentService.getByJobSeeker_jobSeekerIdOrderByDateOfGraduationDesc(jobSeekerId).getData());
 		cvDto.setJobSeekerWorkplaceTitles(this.jobSeekerWorkplaceTitleService.getByJobSeeker_id(jobSeekerId).getData());
 		cvDto.setSocialMedias(this.socialMediaService.getByJobSeeker_id(jobSeekerId).getData());
+		cvDto.setCvDetail(this.cvDetailService.getByJobSeeker_id(jobSeekerId).getData());
 		
 		return new SuccessDataResult<CvDto>(cvDto);
 	}
