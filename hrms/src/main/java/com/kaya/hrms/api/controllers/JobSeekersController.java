@@ -27,12 +27,12 @@ public class JobSeekersController {
 		this.jobSeekerService = jobSeekerService;
 	}
 	
-	@GetMapping("getall")
+	@GetMapping("/getall")
 	public DataResult<List<JobSeeker>> getAll() {
 		return this.jobSeekerService.getAll();
 	}
 
-	@GetMapping("getJobSeekerResumeByJobSeekerId")
+	@GetMapping("/getJobSeekerResumeByJobSeekerId")
 	public DataResult<CvDto> getJobSeekerResumeByJobSeekerId(@RequestParam int jobSeekerId) {
 		return this.jobSeekerService.getJobSeekerResumeByJobSeekerId(jobSeekerId);
 	}

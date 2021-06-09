@@ -1,6 +1,7 @@
 package com.kaya.hrms.core.entities;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,10 +10,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.kaya.hrms.entities.concretes.JobAdvertisementComment;
+import com.kaya.hrms.entities.concretes.JobSeekerWorkplaceTitle;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -52,6 +58,11 @@ public abstract class User {
 		this.password = password;
 		this.createdAt = createdAt;
 	}
+	
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "user")
+	private List<JobAdvertisementComment> jobAdvertisementComments;
 	
 
 }

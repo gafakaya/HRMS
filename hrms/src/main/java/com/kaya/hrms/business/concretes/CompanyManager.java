@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kaya.hrms.business.abstracts.CompanyService;
+import com.kaya.hrms.business.abstracts.WorkplaceService;
 import com.kaya.hrms.business.constants.Messages;
 import com.kaya.hrms.business.validationRules.EmailValidator;
 import com.kaya.hrms.core.utilities.business.BusinessRules;
@@ -16,21 +17,25 @@ import com.kaya.hrms.core.utilities.results.SuccessDataResult;
 import com.kaya.hrms.core.utilities.results.SuccessResult;
 import com.kaya.hrms.dataAccess.abstracts.CompanyDao;
 import com.kaya.hrms.entities.concretes.Company;
+import com.kaya.hrms.entities.concretes.Workplace;
 
 @Service
 public class CompanyManager implements CompanyService {
 
 	private CompanyDao companyDao;
 	private VerificationManager verificationManager;
-	
+	private WorkplaceService workplaceService;
 
 	@Autowired
 	public CompanyManager(
 			CompanyDao companyDao,
-			VerificationManager verificationManager) {
+			VerificationManager verificationManager,
+			WorkplaceService workplaceService) {
 		this.companyDao = companyDao;
 		this.verificationManager = verificationManager;
+		this.workplaceService = workplaceService;
 	}
+
 
 	@Override
 	public DataResult<List<Company>> getAll() {
@@ -67,6 +72,9 @@ public class CompanyManager implements CompanyService {
 		}
 		
 		company.setActive(true);
+		Workplace workplace = new Workplace();
+		workplace.setWorkplaceName(companyName);
+		this.workplaceService.add(workplace);
 		companyDao.save(company);
 		
 		return new SuccessResult(Messages.COMPANY_ADDED);
