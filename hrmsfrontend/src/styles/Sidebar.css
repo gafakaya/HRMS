@@ -1,0 +1,63 @@
+.sidebar {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  flex: 0.4;
+  height: 100vh;
+  max-width: 270px;
+  background-color: var(--jobhub-background-color-primary);
+  color: var(--jobhub-color-secondary);
+  z-index: 999;
+  box-shadow: 2px 0px 2px rgba(114, 114, 114, 0.01);
+}
+
+.sidebar__logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: var(--jobhub-color-primary);
+  margin-top: 12px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.sidebar__logo__icon {
+  margin-right: 5px;
+}
+
+.sidebar__footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin-bottom: 5px;
+}
+
+@media only screen and (max-width: 769px) {
+
+  .sidebar {
+    max-width: max-content;
+  }
+
+  .sidebar__logo {
+    margin-top: 24px;
+  }
+
+  .sidebar__logo > h1 {
+    display: none;
+  }
+
+  .sidebar__logo__icon {
+    margin-bottom: 13px;
+    margin-right: 0px;
+  }
+  
+}
+@media only screen and (max-width: 475px) {
+  .sidebar {
+    display: none;
+  }
+}

@@ -1,0 +1,18 @@
+body {
+  --jobhub-color-primary: #E4B073;
+  --jobhub-color-secondary: #BDBDBD;
+  --jobhub-background-color-primary: #373C3F;
+  --jobhub-background-color-secondary: #2F3437;
+}
+
+.app {
+  background-color: var(--jobhub-background-color-secondary);
+  display: flex;
+  flex-direction: row;
+}
+
+.app__body{
+  display: flex;
+  flex: 1;
+}
+
