@@ -1,6 +1,5 @@
 package com.kaya.hrms.entities.concretes;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -41,13 +40,13 @@ public class JobAdvertisementComment {
 	@Column(name="content")
 	private String content;
 	
-	@Column(name="like")
+	@Column(name="comment_like")
 	private int like;
 	
 	@Column(name="dislike")
 	private int dislike;
 	
-	@Column(name="createAt")
-	private LocalDateTime createAt;
+	@Column(name="created_at")
+	private LocalDateTime createdAt;
 
 }
