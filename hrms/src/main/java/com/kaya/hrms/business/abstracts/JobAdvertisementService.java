@@ -20,6 +20,8 @@ public interface JobAdvertisementService {
 	DataResult<List<JobAdvertisement>> getByEnableSortedDesc();
 	
 	DataResult<List<JobAdvertisementWithCompanyDto>> getJobAdvertisementWithCompany();
+	
+	DataResult<List<JobAdvertisementWithCompanyDto>> getJobAdvertisementWithCompanyOrderByCreatedAt();
 
 	DataResult<List<JobAdvertisement>> getByEnableTrueAndCompanyName(String companyName);
 	

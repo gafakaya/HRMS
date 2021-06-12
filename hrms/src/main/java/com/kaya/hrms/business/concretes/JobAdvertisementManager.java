@@ -1,6 +1,7 @@
 package com.kaya.hrms.business.concretes;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -93,6 +94,14 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 	}
 	
 	@Override
+	public DataResult<List<JobAdvertisementWithCompanyDto>> getJobAdvertisementWithCompanyOrderByCreatedAt() {
+		List<JobAdvertisementWithCompanyDto> result = this.jobAdvertisementDao.getJobAdvertisementWithCompanyOrderByCreatedAt();
+		return new SuccessDataResult<List<JobAdvertisementWithCompanyDto>>(
+				result, 
+				Messages.JOB_ADVERTISEMENT_DTO_LISTED);
+	}
+	
+	@Override
 	public DataResult<List<JobAdvertisement>> getByEnableTrueAndCompanyName(String companyName) {
 		List<JobAdvertisement> result = this.jobAdvertisementDao
 				.getByEnableTrueAndCompany_companyName(companyName);
@@ -103,7 +112,8 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 
 	@Override
 	public Result add(JobAdvertisement jobAdvertisemenet) {
-		jobAdvertisemenet.setCreatedAt(LocalDate.now());
+		jobAdvertisemenet.setLike(0);
+		jobAdvertisemenet.setCreatedAt(LocalDateTime.now());
 		this.jobAdvertisementDao.save(jobAdvertisemenet);
 		return new SuccessResult();
 	}
@@ -121,7 +131,6 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 		this.jobAdvertisementDao.save(result);
 		return  new SuccessResult();
 	}
-		
 	
 	
 

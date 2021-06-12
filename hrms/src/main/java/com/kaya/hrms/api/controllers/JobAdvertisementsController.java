@@ -3,6 +3,7 @@ package com.kaya.hrms.api.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -19,6 +20,7 @@ import com.kaya.hrms.entities.concretes.JobAdvertisement;
 
 @RestController
 @RequestMapping("/api/jobAdvertisements")
+@CrossOrigin
 public class JobAdvertisementsController {
 	
 	private JobAdvertisementService jobAdvertisementService;
@@ -61,7 +63,12 @@ public class JobAdvertisementsController {
 		
 		return this.jobAdvertisementService.getJobAdvertisementWithCompany();
 	}
-
+	
+	@GetMapping("/getJobAdvertisementWithCompanyOrderByCreatedAt")
+	public DataResult<List<JobAdvertisementWithCompanyDto>> getJobAdvertisementWithCompanyOrderByCreatedAt() {
+		return this.jobAdvertisementService.getJobAdvertisementWithCompanyOrderByCreatedAt();
+	}
+	
 	@GetMapping("/getByEnableAndCompany_companyName")
 	public DataResult<List<JobAdvertisement>> getByEnableAndCompany_companyName(
 			@RequestParam("companyName") String companyName) {

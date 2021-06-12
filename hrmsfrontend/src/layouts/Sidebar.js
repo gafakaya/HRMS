@@ -22,10 +22,21 @@ function Sidebar() {
       <SidebarOption Icon={BusinessIcon} title="Companies" />
       <SidebarOption Icon={AssignmentIcon} title="Resume" />
       <SidebarOption Icon={PeopleIcon} title="Friends" />
-      
+
       <div className="sidebar__footer">
         <SidebarOption Icon={SettingsIcon} title="Settings" />
         <SidebarOption Icon={ExitToAppIcon} title="Logout" />
+        <div className="created__by__mehmetkaya">
+          <span className="K">
+            <a
+              href="https://www.linkedin.com/in/mehmet-kaya-14867720a/"
+              target="_blank"
+            >
+              K
+            </a>
+          </span>{" "}
+          <span className="text">Created by Mehmet Kaya</span>
+        </div>
       </div>
     </div>
   );

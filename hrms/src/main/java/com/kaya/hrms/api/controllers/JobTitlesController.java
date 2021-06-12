@@ -3,6 +3,7 @@ package com.kaya.hrms.api.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,7 +17,8 @@ import com.kaya.hrms.core.utilities.results.Result;
 import com.kaya.hrms.entities.concretes.JobTitle;
 
 @RestController
-@RequestMapping("/api/jobtitles")
+@RequestMapping("/api/jobTitlesController")
+@CrossOrigin
 public class JobTitlesController {
 
 	private JobTitleService jobTitleService;

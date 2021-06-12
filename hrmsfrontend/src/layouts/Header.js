@@ -13,7 +13,7 @@ function Header() {
     <div className="header">
       <div className="header__search">
           <form className="header__search__input">
-            <input type="text" />
+            <input placeholder="Search..." type="text" />
             <button type="submit" className="header__search__button">
               <SearchIcon type="submit" className="header__search__logo" />
             </button>

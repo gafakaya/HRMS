@@ -92,5 +92,27 @@ public class Messages {
 	public static String JOB_ADVERTISEMENT_DTO_LISTED = 
 			"Job advertisement dto listed.";
 	
+//	EVENT:---------------------------------------------	
+	public static String EVENT_ADDED = 
+			"Event added.";
+	public static String EVENT_DELETED = 
+			"Event deleted.";
+	public static String EVENT_UPDATED = 
+			"Event updated.";
+	public static String EVENT_LISTED = 
+			"Events listed.";
+	public static String EVENT_LISTED_ORDER_BY_CREATED_AT_DESC = 
+			"Events listed order by created at.(DESC)";
+	public static String EVENT_LISTED_ORDER_BY_CREATED_AT_ASC = 
+			"Events listed order by created at.(ASC)";
+	public static String EVENT_LISTED_BY_COMPANY_ID_ORDER_BY_DATE_OF_EVENT_ASC = 
+			"Events listed by company id order by date of event.(ASC)";
+	public static String EVENT_LISTED_ORDER_BY_DATE_OF_EVENT_ASC = 
+			"Events listed order by date of event.(ASC)";
+	public static String EVENT_PAGED_ORDER_BY_DATE_OF_EVENT_ASC =
+			"Events paged order by date of event.(ASC)";
+	public static String ERROR_EVENT_DATE_OUT_OF_DATE =
+			"Event date is out of date.";
+	
 	
 }

@@ -23,11 +23,20 @@ public interface JobAdvertisementDao extends JpaRepository<JobAdvertisement, Int
 	List<JobAdvertisement> getByEnableTrueAndCompany_companyName(String companyName);
 	
 	@Query("Select new com.kaya.hrms.entities.Dtos."
-			+ "JobAdvertisementWithCompanyDto(c.companyName, t.title, cty.cityName, j.numberOfOpenPositions, j.createdAt, j.applicaitonDateline) "
+			+ "JobAdvertisementWithCompanyDto(c.companyName, t.title, cty.cityName, j.jobDescription, j.like, j.numberOfOpenPositions, j.createdAt, j.applicaitonDateline) "
 			+ "from JobAdvertisement j "
 			+ "Inner join j.jobTitle t "
 			+ "Inner join j.company c "
 			+ "Inner join j.city cty")
 	List<JobAdvertisementWithCompanyDto> getJobAdvertisementWithCompany();
+	
+	@Query("Select new com.kaya.hrms.entities.Dtos."
+			+ "JobAdvertisementWithCompanyDto(c.companyName, t.title, cty.cityName, j.jobDescription, j.like, j.numberOfOpenPositions, j.createdAt, j.applicaitonDateline) "
+			+ "from JobAdvertisement j "
+			+ "Inner join j.jobTitle t "
+			+ "Inner join j.company c "
+			+ "Inner join j.city cty "
+			+ "Order By j.createdAt desc")
+	List<JobAdvertisementWithCompanyDto> getJobAdvertisementWithCompanyOrderByCreatedAt();
 
 }

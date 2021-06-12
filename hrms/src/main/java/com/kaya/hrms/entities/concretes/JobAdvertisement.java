@@ -1,6 +1,7 @@
 package com.kaya.hrms.entities.concretes;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -52,7 +53,7 @@ public class JobAdvertisement {
 	private int numberOfOpenPositions;
 	
 	@Column(name="created_at")
-	private LocalDate createdAt;
+	private LocalDateTime createdAt;
 
 	@Column(name="application_dateline")
 	private LocalDate applicaitonDateline;
@@ -72,7 +73,7 @@ public class JobAdvertisement {
 	@JoinColumn(name="city_id")
 	private City city;
 	
-	@Column(name="like")
+	@Column(name="job_advertisement_like")
 	private int like;
 
 	@JsonIgnore
