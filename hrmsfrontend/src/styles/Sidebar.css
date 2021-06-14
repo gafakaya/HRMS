@@ -67,6 +67,11 @@
   color: var(--jobhub-background-color-secondary) !important;
 }
 
+.link {
+  color: var(--jobhub-color-secondary);
+  text-decoration: none;
+}
+
 @media only screen and (max-width: 769px) {
 
   .sidebar {

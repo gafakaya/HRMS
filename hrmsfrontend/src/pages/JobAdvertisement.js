@@ -1,5 +1,6 @@
-import { Avatar, makeStyles } from "@material-ui/core";
+
 import React, { useEffect, useState } from "react";
+import { Avatar, makeStyles } from "@material-ui/core";
 import JobAdvertisementService from "../services/jobAdvertisementService";
 import "../styles/JobAdvertisement.css";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
@@ -43,7 +44,7 @@ function JobAdvertisement() {
     jobAdvertisementService
       .getJobAdvertisementsWithCompanyOrderByCreatedAt()
       .then((result) => setJobAdvertisements(result.data.data));
-  }, []);
+  }, [jobAdvertisements]);
 
   return (
     <div>

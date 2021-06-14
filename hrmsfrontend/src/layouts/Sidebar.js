@@ -9,6 +9,7 @@ import PeopleIcon from "@material-ui/icons/People";
 import DeviceHubIcon from "@material-ui/icons/DeviceHub";
 import SettingsIcon from "@material-ui/icons/Settings";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import { Link } from "react-router-dom";
 
 function Sidebar() {
   return (
@@ -18,8 +19,12 @@ function Sidebar() {
         <h1>JobHub</h1>
       </div>
       <SidebarOption Icon={AccountCircleIcon} title="Profile" />
-      <SidebarOption Icon={BusinessCenterIcon} title="Job Advertisements" />
-      <SidebarOption Icon={BusinessIcon} title="Companies" />
+      <Link className="link" to={`/jobAdvertisements/`}>
+        <SidebarOption Icon={BusinessCenterIcon} title="Job Advertisements" />
+      </Link>
+      <Link className="link" to={`/companies/`}>
+        <SidebarOption Icon={BusinessIcon} title="Companies" />
+      </Link>
       <SidebarOption Icon={AssignmentIcon} title="Resume" />
       <SidebarOption Icon={PeopleIcon} title="Friends" />
 

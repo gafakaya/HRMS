@@ -10,6 +10,7 @@
   color: var(--jobhub-color-secondary);
   cursor: pointer;
   user-select: none;
+  transition: all 200ms ease-out;
 }
 
 .headerOption:hover {

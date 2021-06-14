@@ -17,6 +17,7 @@
   text-align: center;
   padding-top: 8px;
   padding-bottom: 8px;
+  user-select: none;
 }
 
 .event__name {
@@ -33,7 +34,8 @@
   padding: 5px;
   padding-left: 15px;
   padding-right: 15px;
-  border-radius: 20px;
+  border-radius: 10px;
+  transition: all 200ms ease-out;
 }
 
 .event__content__body {
@@ -44,9 +46,14 @@
   justify-content: space-evenly;
 }
 
+.company__name {
+  font-weight: 500;
+}
+
 .event__content:hover {
   cursor: pointer;
   color: var(--jobhub-color-primary);
   user-select: none;
   background-color: var(--jobhub-background-color-tertiary);
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.1);
 }

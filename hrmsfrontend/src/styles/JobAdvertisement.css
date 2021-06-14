@@ -76,6 +76,7 @@
   align-items: center;
   padding: 10px;
   color: var(--jobhub-color-tertiary);
+  transition: all 200ms ease-out;
 }
 
 .jobAdvertisement__footer__elements > h4 {

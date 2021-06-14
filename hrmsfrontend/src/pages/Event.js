@@ -19,10 +19,10 @@ function Event() {
         <h3>Current events</h3>
       </div>
 
-      <FlipMove>
+      {/* <FlipMove> */}
         <div className="event__body">
           {events.map((event) => (
-            <div className="event__content">
+            <div className="event__content" key={event.eventId}>
               <div className="event__name">{event.eventName}</div>
               <div className="event__content__body">
                 <div className="company__name">{event.company.companyName}</div>
@@ -38,7 +38,7 @@ function Event() {
             </div>
           ))}
         </div>
-      </FlipMove>
+      {/* </FlipMove> */}
     </div>
   );
 }

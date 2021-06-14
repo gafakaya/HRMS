@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default class CompanyService {
   constructor() {
-    this.apiUrl = "http://localhost:8080/api/companies/";
+    this.apiUrl = "http://localhost:8080/api/companiesController/";
   }
 
   getCompanies() {

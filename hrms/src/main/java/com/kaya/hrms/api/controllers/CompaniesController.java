@@ -13,7 +13,7 @@ import com.kaya.hrms.core.utilities.results.DataResult;
 import com.kaya.hrms.entities.concretes.Company;
 
 @RestController
-@RequestMapping("/api/companies")
+@RequestMapping("/api/companiesController/")
 @CrossOrigin
 public class CompaniesController {
 
@@ -24,7 +24,7 @@ public class CompaniesController {
 		this.companyService = companyService;
 	}
 
-	@GetMapping("getall")
+	@GetMapping("getAll")
 	public DataResult<List<Company>> getAll() {
 		return this.companyService.getAll();
 	}
