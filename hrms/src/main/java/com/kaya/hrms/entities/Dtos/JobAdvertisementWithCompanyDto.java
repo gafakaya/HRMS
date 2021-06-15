@@ -20,5 +20,9 @@ public class JobAdvertisementWithCompanyDto {
 	private int numberOfOpenPositions;
 	private LocalDateTime createdAt;
 	private LocalDate applicaitonDateline;
-
+	private String workTime;
+	private String workType;
+	private int maxSalary;
+	private int minSalary;
+	
 }

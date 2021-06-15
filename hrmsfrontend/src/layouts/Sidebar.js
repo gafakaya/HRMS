@@ -16,7 +16,9 @@ function Sidebar() {
     <div className="sidebar">
       <div className="sidebar__logo">
         <DeviceHubIcon className="sidebar__logo__icon" />
-        <h1>JobHub</h1>
+        <Link className="link__logo" to={`/jobAdvertisements/`}>
+          <h1>JobHub</h1>
+        </Link>
       </div>
       <SidebarOption Icon={AccountCircleIcon} title="Profile" />
       <Link className="link" to={`/jobAdvertisements/`}>

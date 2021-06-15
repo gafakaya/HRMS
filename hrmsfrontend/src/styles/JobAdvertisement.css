@@ -58,6 +58,18 @@
   line-height: 1.7;
 }
 
+.jobAdvertisement__body__item {
+  color: var(--jobhub-color-secondary);
+  font-size: 14px;
+  padding: 5px;
+  margin-left: 10px;
+}
+
+.jobAdvertisement__body__item > span {
+  font-weight: 600;
+  margin-right: 10px;
+}
+
 .jobAdvertisement__footer {
   display: flex;
   flex-direction: row;

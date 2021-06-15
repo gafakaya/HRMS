@@ -72,6 +72,11 @@
   text-decoration: none;
 }
 
+.link__logo {
+  color: var(--jobhub-color-primary);
+  text-decoration: none;
+}
+
 @media only screen and (max-width: 769px) {
 
   .sidebar {
@@ -94,7 +99,7 @@
     display: none;
   }
 
-  .sidebar__logo > h1 {
+  .link__logo > h1 {
     display: none;
   }
 

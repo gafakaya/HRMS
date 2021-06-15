@@ -81,3 +81,26 @@
   color: var(--jobhub-color-primary);
 }
 
+@media only screen and (max-width: 1080px) {
+  .company {
+    width: 600px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .company {
+    width: 500px;
+  }
+}
+
+@media only screen and (max-width: 769px) {
+  .company {
+    width: 420px;
+    font-size: 12px;
+  }
+
+  .company__footer__items > h5 {
+    margin-left: 10px;
+    font-size: 14px;
+  }
+}

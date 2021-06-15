@@ -84,4 +84,16 @@ public class JobAdvertisement {
 	@OneToMany(mappedBy = "jobAdvertisement")
 	private List<JobAdvertisementApplication> jobAdvertisementApplications;
 	
+	@ManyToOne
+	@JoinColumn(name="work_type_id")
+	private WorkType workType;
+
+	@ManyToOne
+	@JoinColumn(name="work_time_id")
+	private WorkTime workTime;
+	
+	@Column(name="confirm")
+	private boolean confirm;
+	
+	
 }

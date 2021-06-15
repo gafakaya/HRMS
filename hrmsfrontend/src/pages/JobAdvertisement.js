@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { Avatar, makeStyles } from "@material-ui/core";
 import JobAdvertisementService from "../services/jobAdvertisementService";
@@ -84,6 +83,34 @@ function JobAdvertisement() {
             <p className="jobAdvertisement__body__description">
               {jobAdvertisement.jobDescription}
             </p>
+            <div className="jobAdvertisement__body__item">
+              <span>Job Title: </span>
+              {jobAdvertisement.title}
+            </div>
+            <div className="jobAdvertisement__body__item">
+              <span>City: </span>
+              {jobAdvertisement.cityName}
+            </div>
+            <div className="jobAdvertisement__body__item">
+              <span>Number of Open Positions: </span>
+              {jobAdvertisement.numberOfOpenPositions}
+            </div>
+            <div className="jobAdvertisement__body__item">
+              <span>Work Time: </span>
+              {jobAdvertisement.workTime}
+            </div>
+            <div className="jobAdvertisement__body__item">
+              <span>Work Type: </span>
+              {jobAdvertisement.workType}
+            </div>
+            <div className="jobAdvertisement__body__item">
+              <span>Max Salary: </span>
+              {jobAdvertisement.maxSalary}$
+            </div>
+            <div className="jobAdvertisement__body__item">
+              <span>Min Salary: </span>
+              {jobAdvertisement.minSalary}$
+            </div>
           </div>
           <div className="jobAdvertisement__footer">
             <div className="jobAdvertisement__footer__elements jobAdvertisement__like">
