@@ -36,12 +36,12 @@ function Company() {
   return (
     <div>
       {companies.map((company) => (
-        <div className="company" key={company.companyName}>
+        <div className="company" key={company.id}>
           <div className="company__body">
             <div className="company__body__parts">
               <div className="company_avatarAndName">
                 <Avatar id="avatar" className={classes.large} src="" />
-                <h4>{company.companyName}</h4>
+                <b className="companyName">{company.companyName}</b>
               </div>
               <div><b>Web Site: </b><i>{company.webSite}</i></div>
             </div>
@@ -53,11 +53,11 @@ function Company() {
           <div className="company__footer">
             <div className="company__footer__items">
               <EventAvailableIcon />
-              <h5>12</h5>
+              <b className="company__footer__item">12</b>
             </div>
             <div className="company__footer__items">
               <AssignmentIcon />
-              <h5>12</h5>
+              <b className="company__footer__item">12</b>
             </div>
           </div>
         </div>

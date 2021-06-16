@@ -37,4 +37,8 @@ export default class JobAdvertisementService {
     return axios.get(`${this.apiUrl}getJobAdvertisementWithCompanyOrderByCreatedAt`);
   }
 
+  add(jobAdvertisement) {
+    axios.post(`${this.apiUrl}add`, jobAdvertisement);
+  }
+
 }

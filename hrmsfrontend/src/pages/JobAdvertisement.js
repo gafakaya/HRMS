@@ -53,7 +53,7 @@ function JobAdvertisement() {
             <div className="jobAdvertisement__header__company">
               <Avatar id="avatar" className={classes.large} src="" />
               <div className="jobAdvertisement__header__company_info">
-                {<h4> {jobAdvertisement.companyName}</h4>}
+                {<b> {jobAdvertisement.companyName}</b>}
                 <p className="jobAdvertisement__time">
                   {new Date(jobAdvertisement.createdAt).getDate("en-US")}:
                   {new Date(jobAdvertisement.createdAt).getMonth("en-US") < 10
@@ -111,19 +111,23 @@ function JobAdvertisement() {
               <span>Min Salary: </span>
               {jobAdvertisement.minSalary}$
             </div>
+            <div className="jobAdvertisement__body__item">
+              <span>Application Deadline: </span>
+              {jobAdvertisement.applicaitonDateline}
+            </div>
           </div>
           <div className="jobAdvertisement__footer">
             <div className="jobAdvertisement__footer__elements jobAdvertisement__like">
               <ThumbUpIcon className="like__icon" />
-              <h4>{jobAdvertisement.like}</h4>
+              <b>{jobAdvertisement.like}</b>
             </div>
             <div className="jobAdvertisement__footer__elements jobAdvertisement__comment">
               <InsertCommentIcon className="comment__icon" />
-              <h4>45</h4>
+              <b>45</b>
             </div>
             <div className="jobAdvertisement__footer__elements jobAdvertisement__application">
               <AssignmentIcon className="application__icon" />
-              <h4>14</h4>
+              <b>14</b>
             </div>
           </div>
         </div>

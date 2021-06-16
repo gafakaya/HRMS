@@ -5,7 +5,7 @@ function SidebarOption({ Icon, title }) {
   return (
     <div className="sidebarOption">
       {Icon && <Icon className="sidebarOption__icon" />}
-      <h3 className="sidebarOption__title">{title}</h3>
+      <b className="sidebarOption__title">{title}</b>
     </div>
   );
 }

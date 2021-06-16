@@ -2,6 +2,7 @@
   margin: 0;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+  font-family: 'Poppins', sans-serif !important;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -12,12 +13,15 @@
 
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+* > h1,h2,h3,h4,h5,h6 {
+  margin: 0;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    monospace !important;
 }

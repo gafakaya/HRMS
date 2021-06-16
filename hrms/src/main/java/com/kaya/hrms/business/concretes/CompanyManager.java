@@ -1,6 +1,7 @@
 package com.kaya.hrms.business.concretes;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +12,7 @@ import com.kaya.hrms.business.constants.Messages;
 import com.kaya.hrms.business.validationRules.EmailValidator;
 import com.kaya.hrms.core.utilities.business.BusinessRules;
 import com.kaya.hrms.core.utilities.results.DataResult;
+import com.kaya.hrms.core.utilities.results.ErrorDataResult;
 import com.kaya.hrms.core.utilities.results.ErrorResult;
 import com.kaya.hrms.core.utilities.results.Result;
 import com.kaya.hrms.core.utilities.results.SuccessDataResult;
@@ -45,7 +47,11 @@ public class CompanyManager implements CompanyService {
 
 	@Override
 	public DataResult<Company> getById(int companyId) {
-		return null;
+		Optional<Company> result = this.companyDao.findById(companyId);
+		if (!result.isPresent()) {
+			return new ErrorDataResult<Company>("Company is not found.");
+		}
+		return new SuccessDataResult<Company>(result.get());
 	}
 
 	@Override

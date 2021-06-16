@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.kaya.hrms.business.abstracts.JobAdvertisementService;
 import com.kaya.hrms.core.utilities.results.DataResult;
 import com.kaya.hrms.core.utilities.results.Result;
+import com.kaya.hrms.entities.Dtos.JobAdvertisementAddDto;
 import com.kaya.hrms.entities.Dtos.JobAdvertisementWithCompanyDto;
 import com.kaya.hrms.entities.concretes.JobAdvertisement;
 
@@ -77,8 +78,8 @@ public class JobAdvertisementsController {
 	
 	@PostMapping("/add")
 	public Result add(
-			@RequestBody JobAdvertisement jobAdvertisement) {
-		return this.jobAdvertisementService.add(jobAdvertisement);
+			@RequestBody JobAdvertisementAddDto jobAdvertisementAddDto) {
+		return this.jobAdvertisementService.add(jobAdvertisementAddDto);
 	}
 	
 	@PutMapping("/update")

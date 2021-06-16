@@ -16,16 +16,16 @@ public interface JobAdvertisementDao extends JpaRepository<JobAdvertisement, Int
 	
 	Page<JobAdvertisement> getByEnableTrue(Pageable pageable);
 
-	List<JobAdvertisement> getByEnableTrueOrderByApplicaitonDatelineAsc();
+	List<JobAdvertisement> getByEnableTrueOrderByApplicationDeadlineAsc();
 	
-	List<JobAdvertisement> getByEnableTrueOrderByApplicaitonDatelineDesc();
+	List<JobAdvertisement> getByEnableTrueOrderByApplicationDeadlineDesc();
 
 	List<JobAdvertisement> getByEnableTrueAndCompany_companyName(String companyName);
 	
 	@Query("Select new com.kaya.hrms.entities.Dtos."
-			+ "JobAdvertisementWithCompanyDto(c.companyName, t.title, cty.cityName"
+			+ "JobAdvertisementWithCompanyDto(j.id, c.companyName, t.title, cty.cityName"
 			+ ", j.jobDescription, j.like, j.numberOfOpenPositions, j.createdAt"
-			+ ", j.applicaitonDateline, wtime.workTimeName, wtype.workTypeName"
+			+ ", j.applicationDeadline, wtime.workTimeName, wtype.workTypeName"
 			+ ", j.maxSalary, j.minSalary) "
 			+ "from JobAdvertisement j "
 			+ "Inner join j.jobTitle t "
@@ -36,16 +36,18 @@ public interface JobAdvertisementDao extends JpaRepository<JobAdvertisement, Int
 	List<JobAdvertisementWithCompanyDto> getJobAdvertisementWithCompany();
 	
 	@Query("Select new com.kaya.hrms.entities.Dtos."
-			+ "JobAdvertisementWithCompanyDto(c.companyName, t.title, cty.cityName"
+			+ "JobAdvertisementWithCompanyDto(j.id, c.companyName, t.title, cty.cityName"
 			+ ", j.jobDescription, j.like, j.numberOfOpenPositions, j.createdAt"
-			+ ", j.applicaitonDateline, wtime.workTimeName, wtype.workTypeName"
+			+ ", j.applicationDeadline, wtime.workTimeName, wtype.workTypeName"
 			+ ", j.maxSalary, j.minSalary) "
 			+ "from JobAdvertisement j "
 			+ "Inner join j.jobTitle t "
 			+ "Inner join j.company c "
 			+ "Inner join j.city cty "
 			+ "Inner join j.workTime wtime "	
-			+ "Inner join j.workType wtype "	
+			+ "Inner join j.workType wtype "
+			+ "where j.confirm = true "
+			+ "AND j.enable = true	"
 			+ "Order By j.createdAt desc")
 	List<JobAdvertisementWithCompanyDto> getJobAdvertisementWithCompanyOrderByCreatedAt();
 

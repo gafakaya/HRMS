@@ -35,9 +35,19 @@ public class CityManager implements CityService {
 	}
 
 	@Override
+	public DataResult<City> getById(int cityId) {
+		City result = this.cityDao.getById(cityId);
+		
+		return new SuccessDataResult<City>(
+				result,
+				Messages.CITY_LISTED_BY_ID);
+	}
+	
+	@Override
 	public Result add(City city) {
 		this.cityDao.save(city);
 		return new SuccessResult(Messages.CITY_ADDED);
 	}
+
 
 }

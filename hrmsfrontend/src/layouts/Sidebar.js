@@ -17,7 +17,7 @@ function Sidebar() {
       <div className="sidebar__logo">
         <DeviceHubIcon className="sidebar__logo__icon" />
         <Link className="link__logo" to={`/jobAdvertisements/`}>
-          <h1>JobHub</h1>
+          <b className="logo">JobHub</b>
         </Link>
       </div>
       <SidebarOption Icon={AccountCircleIcon} title="Profile" />
@@ -35,12 +35,12 @@ function Sidebar() {
         <SidebarOption Icon={ExitToAppIcon} title="Logout" />
         <div className="created__by__mehmetkaya">
           <span className="K">
-            <a
+            {/* <a
               href="https://www.linkedin.com/in/mehmet-kaya-14867720a/"
               target="_blank"
-            >
+            > */}
               K
-            </a>
+            {/* </a> */}
           </span>{" "}
           <span className="text">Created by Mehmet Kaya</span>
         </div>

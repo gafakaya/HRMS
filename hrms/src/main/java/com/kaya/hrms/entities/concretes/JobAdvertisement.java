@@ -56,7 +56,7 @@ public class JobAdvertisement {
 	private LocalDateTime createdAt;
 
 	@Column(name="application_dateline")
-	private LocalDate applicaitonDateline;
+	private LocalDate applicationDeadline;
 
 	@Column(name="enable")
 	private boolean enable;

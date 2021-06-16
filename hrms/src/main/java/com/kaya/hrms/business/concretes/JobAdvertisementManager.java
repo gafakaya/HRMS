@@ -10,13 +10,19 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import com.kaya.hrms.business.abstracts.CityService;
+import com.kaya.hrms.business.abstracts.CompanyService;
 import com.kaya.hrms.business.abstracts.JobAdvertisementService;
+import com.kaya.hrms.business.abstracts.JobTitleService;
+import com.kaya.hrms.business.abstracts.WorkTimeService;
+import com.kaya.hrms.business.abstracts.WorkTypeService;
 import com.kaya.hrms.business.constants.Messages;
 import com.kaya.hrms.core.utilities.results.DataResult;
 import com.kaya.hrms.core.utilities.results.Result;
 import com.kaya.hrms.core.utilities.results.SuccessDataResult;
 import com.kaya.hrms.core.utilities.results.SuccessResult;
 import com.kaya.hrms.dataAccess.abstracts.JobAdvertisementDao;
+import com.kaya.hrms.entities.Dtos.JobAdvertisementAddDto;
 import com.kaya.hrms.entities.Dtos.JobAdvertisementWithCompanyDto;
 import com.kaya.hrms.entities.concretes.JobAdvertisement;
 
@@ -24,11 +30,23 @@ import com.kaya.hrms.entities.concretes.JobAdvertisement;
 public class JobAdvertisementManager implements JobAdvertisementService {
 
 	private JobAdvertisementDao jobAdvertisementDao;
+	private CityService cityService;
+	private WorkTypeService workTypeService;
+	private WorkTimeService workTimeService;
+	private JobTitleService jobTitleService;
+	private CompanyService companyService;
 	
 	@Autowired
-	public JobAdvertisementManager(
-			JobAdvertisementDao jobAdvertisementDao) {
+	public JobAdvertisementManager(JobAdvertisementDao jobAdvertisementDao, CityService cityService,
+			WorkTypeService workTypeService, WorkTimeService workTimeService, JobTitleService jobTitleService,
+			CompanyService companyService) {
+		super();
 		this.jobAdvertisementDao = jobAdvertisementDao;
+		this.cityService = cityService;
+		this.workTypeService = workTypeService;
+		this.workTimeService = workTimeService;
+		this.jobTitleService = jobTitleService;
+		this.companyService = companyService;
 	}
 
 	@Override
@@ -67,7 +85,7 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 	public DataResult<List<JobAdvertisement>> getByEnableSortedAsc() {
 		
 		List<JobAdvertisement> result = this.jobAdvertisementDao
-				.getByEnableTrueOrderByApplicaitonDatelineAsc();
+				.getByEnableTrueOrderByApplicationDeadlineAsc();
 		
 		return new SuccessDataResult<List<JobAdvertisement>>(
 				result,
@@ -78,7 +96,7 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 	public DataResult<List<JobAdvertisement>> getByEnableSortedDesc() {
 		
 		List<JobAdvertisement> result = this.jobAdvertisementDao
-				.getByEnableTrueOrderByApplicaitonDatelineDesc();
+				.getByEnableTrueOrderByApplicationDeadlineDesc();
 		
 		return new SuccessDataResult<List<JobAdvertisement>>(
 				result,
@@ -111,21 +129,39 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 	}
 
 	@Override
-	public Result add(JobAdvertisement jobAdvertisemenet) {
-		jobAdvertisemenet.setLike(0);
-		jobAdvertisemenet.setCreatedAt(LocalDateTime.now());
-		this.jobAdvertisementDao.save(jobAdvertisemenet);
+	public Result add(JobAdvertisementAddDto jobAdvertisementAddDto) {
+		JobAdvertisement jobAdvertisement = new JobAdvertisement();
+		jobAdvertisement.setLike(0);
+		jobAdvertisement.setCreatedAt(LocalDateTime.now());
+		jobAdvertisement.setConfirm(false);
+		jobAdvertisement.setApplicationDeadline(jobAdvertisementAddDto.getApplicationDeadline());
+		jobAdvertisement.setJobDescription(jobAdvertisementAddDto.getJobDescription());
+		jobAdvertisement.setMaxSalary(jobAdvertisementAddDto.getMaxSalary());
+		jobAdvertisement.setMinSalary(jobAdvertisementAddDto.getMinSalary());
+		jobAdvertisement.setNumberOfOpenPositions(jobAdvertisementAddDto.getNumberOfOpenPositions());
+		jobAdvertisement.setCompany(this.companyService.getById(jobAdvertisementAddDto.getCompanyId()).getData());
+		jobAdvertisement.setWorkTime(this.workTimeService.getById(jobAdvertisementAddDto.getWorkTimeId()).getData());
+		jobAdvertisement.setWorkType(this.workTypeService.getById(jobAdvertisementAddDto.getWorkTypeId()).getData());
+		jobAdvertisement.setJobTitle(this.jobTitleService.getById(jobAdvertisementAddDto.getJobTitleId()).getData());
+		jobAdvertisement.setCity(this.cityService.getById(jobAdvertisementAddDto.getCityId()).getData());
+		
+		
+		if(jobAdvertisement.getApplicationDeadline().isBefore(LocalDate.now())) {
+			jobAdvertisement.setEnable(false);
+		}
+		jobAdvertisement.setEnable(true);
+		this.jobAdvertisementDao.save(jobAdvertisement);
 		return new SuccessResult();
 	}
 
 	@Override
-	public Result update(int jobAdvertisemenetId, JobAdvertisement jobAdvertisemenet) {
+	public Result update(int jobAdvertisementId, JobAdvertisement jobAdvertisement) {
 		
-		JobAdvertisement result = this.jobAdvertisementDao.getById(jobAdvertisemenetId);
+		JobAdvertisement result = this.jobAdvertisementDao.getById(jobAdvertisementId);
 		
-		result.setEnable(jobAdvertisemenet.isEnable());
+		result.setEnable(jobAdvertisement.isEnable());
 		
-		if(jobAdvertisemenet.getApplicaitonDateline().isBefore(LocalDate.now())) {
+		if(jobAdvertisement.getApplicationDeadline().isBefore(LocalDate.now())) {
 			result.setEnable(false);
 		}
 		this.jobAdvertisementDao.save(result);

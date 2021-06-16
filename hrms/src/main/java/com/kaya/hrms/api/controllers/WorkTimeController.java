@@ -11,36 +11,36 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kaya.hrms.business.abstracts.JobTitleService;
+import com.kaya.hrms.business.abstracts.WorkTimeService;
 import com.kaya.hrms.core.utilities.results.DataResult;
 import com.kaya.hrms.core.utilities.results.Result;
-import com.kaya.hrms.entities.concretes.JobTitle;
+import com.kaya.hrms.entities.concretes.WorkTime;
 
 @RestController
-@RequestMapping("/api/jobTitlesController")
+@RequestMapping("api/workTimeController/")
 @CrossOrigin
-public class JobTitlesController {
+public class WorkTimeController {
 
-	private JobTitleService jobTitleService;
+	private WorkTimeService workTimeService;
 
 	@Autowired
-	public JobTitlesController(JobTitleService jobTitleService) {
-		this.jobTitleService = jobTitleService;
+	public WorkTimeController(WorkTimeService workTimeService) {
+		this.workTimeService = workTimeService;
 	}
 	
-	@GetMapping("/getAll")
-	public DataResult<List<JobTitle>> getAll(){
-		return this.jobTitleService.getAll();
+	@GetMapping("getAll")
+	public DataResult<List<WorkTime>> getAll() {
+		return this.workTimeService.getAll();
 	}
 	
-	@GetMapping("/getByName")
-	public DataResult<JobTitle> getByName(@RequestParam String jobTitleName){
-		return this.jobTitleService.getByName(jobTitleName);
+	@GetMapping("getById")
+	public DataResult<WorkTime> getById(@RequestParam int workTimeId) {
+		return this.workTimeService.getById(workTimeId);
 	}
-
-	@PostMapping("/add")
-	public Result add(@RequestBody JobTitle jobTitle) {
-		return this.jobTitleService.add(jobTitle);
+	
+	@PostMapping("add")
+	public Result add(@RequestBody WorkTime workTime) {
+		return this.workTimeService.add(workTime);
 	}
 	
 }

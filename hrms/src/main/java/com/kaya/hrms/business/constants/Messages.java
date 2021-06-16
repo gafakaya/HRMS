@@ -72,6 +72,8 @@ public class Messages {
 	
 	public static String CITY_LISTED = 
 			"Cities listed.";
+	public static String CITY_LISTED_BY_ID = 
+			"Cities listed by id.";
 	public static String CITY_ADDED = 
 			"City added.";
 	

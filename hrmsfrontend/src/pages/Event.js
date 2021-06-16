@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../styles/Event.css";
-import FlipMove from "react-flip-move";
+// import FlipMove from "react-flip-move";
 import EventService from "../services/eventService";
 
 function Event() {
