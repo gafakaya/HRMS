@@ -113,7 +113,7 @@ function JobAdvertisement() {
             </div>
             <div className="jobAdvertisement__body__item">
               <span>Application Deadline: </span>
-              {jobAdvertisement.applicaitonDateline}
+              {jobAdvertisement.applicationDeadline}
             </div>
           </div>
           <div className="jobAdvertisement__footer">

@@ -150,6 +150,7 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 			jobAdvertisement.setEnable(false);
 		}
 		jobAdvertisement.setEnable(true);
+		System.out.println(jobAdvertisementAddDto + "aaaa");
 		this.jobAdvertisementDao.save(jobAdvertisement);
 		return new SuccessResult();
 	}
