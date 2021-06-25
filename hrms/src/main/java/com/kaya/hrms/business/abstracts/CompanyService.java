@@ -16,5 +16,7 @@ public interface CompanyService {
 	
 	Result delete(int companyId);
 	
+	Result confirmation(int companyId, boolean confirm);
+	
 //	Result update(JobSeeker jobSeeker);
 }

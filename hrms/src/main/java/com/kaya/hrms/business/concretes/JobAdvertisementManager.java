@@ -7,7 +7,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.kaya.hrms.business.abstracts.CityService;
@@ -22,8 +21,9 @@ import com.kaya.hrms.core.utilities.results.Result;
 import com.kaya.hrms.core.utilities.results.SuccessDataResult;
 import com.kaya.hrms.core.utilities.results.SuccessResult;
 import com.kaya.hrms.dataAccess.abstracts.JobAdvertisementDao;
-import com.kaya.hrms.entities.Dtos.JobAdvertisementAddDto;
-import com.kaya.hrms.entities.Dtos.JobAdvertisementWithCompanyDto;
+import com.kaya.hrms.entities.Dtos.JobAdvertisementDtos.JobAdvertisementAddDto;
+import com.kaya.hrms.entities.Dtos.JobAdvertisementDtos.JobAdvertisementUpdateDto;
+import com.kaya.hrms.entities.Dtos.JobAdvertisementDtos.JobAdvertisementWithCompanyDto;
 import com.kaya.hrms.entities.concretes.JobAdvertisement;
 
 @Service
@@ -110,6 +110,14 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 				result, 
 				Messages.JOB_ADVERTISEMENT_DTO_LISTED);
 	}
+
+	@Override
+	public DataResult<List<JobAdvertisementWithCompanyDto>> getJobAdvertisementsNonConfirm() {
+		List<JobAdvertisementWithCompanyDto> result = this.jobAdvertisementDao.getJobAdvertisementsNonConfirm();
+		return new SuccessDataResult<List<JobAdvertisementWithCompanyDto>>(
+				result, 
+				Messages.JOB_ADVERTISEMENT_NONCONFIRM_LISTED);
+	}
 	
 	@Override
 	public DataResult<List<JobAdvertisementWithCompanyDto>> getJobAdvertisementWithCompanyOrderByCreatedAt() {
@@ -150,25 +158,58 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 			jobAdvertisement.setEnable(false);
 		}
 		jobAdvertisement.setEnable(true);
-		System.out.println(jobAdvertisementAddDto + "aaaa");
 		this.jobAdvertisementDao.save(jobAdvertisement);
 		return new SuccessResult();
 	}
 
 	@Override
-	public Result update(int jobAdvertisementId, JobAdvertisement jobAdvertisement) {
+	public Result update(int jobAdvertisementId, JobAdvertisementUpdateDto jobAdvertisementUpdateDto) {
 		
 		JobAdvertisement result = this.jobAdvertisementDao.getById(jobAdvertisementId);
+		result.setConfirm(jobAdvertisementUpdateDto.isConfirm()); // TODO : Confirm false ise iş ilani silinsin.
+		result.setApplicationDeadline(jobAdvertisementUpdateDto.getApplicationDeadline());
+		result.setJobDescription(jobAdvertisementUpdateDto.getJobDescription());
+		result.setMaxSalary(jobAdvertisementUpdateDto.getMaxSalary());
+		result.setMinSalary(jobAdvertisementUpdateDto.getMinSalary());
+		result.setNumberOfOpenPositions(jobAdvertisementUpdateDto.getNumberOfOpenPositions());
+		result.setWorkTime(this.workTimeService.getById(jobAdvertisementUpdateDto.getWorkTimeId()).getData());
+		result.setWorkType(this.workTypeService.getById(jobAdvertisementUpdateDto.getWorkTypeId()).getData());
+		result.setJobTitle(this.jobTitleService.getById(jobAdvertisementUpdateDto.getJobTitleId()).getData());
+		result.setCity(this.cityService.getById(jobAdvertisementUpdateDto.getCityId()).getData());
 		
-		result.setEnable(jobAdvertisement.isEnable());
-		
-		if(jobAdvertisement.getApplicationDeadline().isBefore(LocalDate.now())) {
+		if(jobAdvertisementUpdateDto.getApplicationDeadline().isBefore(LocalDate.now())) {
 			result.setEnable(false);
 		}
+		
+		result.setEnable(jobAdvertisementUpdateDto.isEnable());
+		
 		this.jobAdvertisementDao.save(result);
 		return  new SuccessResult();
 	}
+
+	@Override
+	public Result delete(int jobAdvertisementId) {
+		JobAdvertisement result = this.jobAdvertisementDao.getById(jobAdvertisementId);
+		this.jobAdvertisementDao.delete(result);
+		return new SuccessResult(Messages.JOB_ADVERTISEMENT_DELETED);
+	}
 	
+	@Override
+	public Result confirmation(int jobAdvertisementId, boolean confirm) {
+
+		JobAdvertisement result = this.jobAdvertisementDao.getById(jobAdvertisementId);
+		
+		if (!confirm){
+			this.delete(jobAdvertisementId);
+			return new SuccessResult(Messages.JOB_ADVERTISEMENT_DELETED);
+		}
+		
+		result.setConfirm(true);
+		
+		this.jobAdvertisementDao.save(result);
+
+		return new SuccessResult(Messages.JOB_ADVERTISEMENT_CONFIRMED);
+	}
 	
 
 }

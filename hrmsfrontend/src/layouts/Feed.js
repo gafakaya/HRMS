@@ -24,7 +24,7 @@ function Feed() {
         {/* Add Job Advertisement */}
         <Route
           exact
-          path="/addjobadvertisements"
+          path="/jobadvertisements/add"
           component={AddJobAdvertisement}
         />
         {/* <Route path="/products/:name" component={ProductDetail} />

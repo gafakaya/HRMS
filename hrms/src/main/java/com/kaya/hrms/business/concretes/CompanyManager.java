@@ -19,6 +19,7 @@ import com.kaya.hrms.core.utilities.results.SuccessDataResult;
 import com.kaya.hrms.core.utilities.results.SuccessResult;
 import com.kaya.hrms.dataAccess.abstracts.CompanyDao;
 import com.kaya.hrms.entities.concretes.Company;
+import com.kaya.hrms.entities.concretes.JobAdvertisement;
 import com.kaya.hrms.entities.concretes.Workplace;
 
 @Service
@@ -72,10 +73,10 @@ public class CompanyManager implements CompanyService {
 			return isEmailVerificate;
 		}
 		
-		Result isConfirm = checkEmployeesConfirmation(company);
-		if(!isConfirm.isSuccess()) {
-			return isConfirm;
-		}
+//		Result isConfirm = checkEmployeesConfirmation(company);
+//		if(!isConfirm.isSuccess()) {
+//			return isConfirm;
+//		}
 		
 		company.setActive(true);
 		Workplace workplace = new Workplace();
@@ -88,8 +89,26 @@ public class CompanyManager implements CompanyService {
 
 	@Override
 	public Result delete(int companyId) {
-		// TODO Auto-generated method stub
-		return null;
+		Company result = this.companyDao.getById(companyId);
+		this.companyDao.delete(result);
+		return new SuccessResult(Messages.COMPANY_DELETED);
+	}
+	
+	@Override
+	public Result confirmation(int companyId, boolean confirm) {
+		Company result = this.companyDao.getById(companyId);
+		
+		if (!confirm){
+			result.setConfirm(false);
+			this.companyDao.save(result);
+			return new SuccessResult(Messages.COMPANY_CONFIRMATION_IS_DELAYED);
+		}
+		
+		result.setConfirm(true);
+		
+		this.companyDao.save(result);
+
+		return new SuccessResult(Messages.COMPANY_CONFIRMATION_IS_ACCEPTED);
 	}
 	
 	public Result checkEmployeesConfirmation(Company company) {
@@ -126,5 +145,7 @@ public class CompanyManager implements CompanyService {
 		
 		return verificationMailResult;
 	}
+
+
 
 }

@@ -46,6 +46,7 @@ public class JobSeeker extends User {
 	@Column(name="is_confirm")
 	private boolean isConfirm;
 	
+	
 	public JobSeeker(
 			int id,
 			String email,

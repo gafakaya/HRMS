@@ -1,4 +1,4 @@
-package com.kaya.hrms.entities.Dtos;
+package com.kaya.hrms.entities.Dtos.JobAdvertisementDtos;
 
 import java.time.LocalDate;
 
@@ -9,9 +9,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class JobAdvertisementAddDto {
+public class JobAdvertisementUpdateDto {
 	
-	private int companyId;
 	private int JobTitleId;
 	private int cityId;
 	private String jobDescription;
@@ -21,5 +20,7 @@ public class JobAdvertisementAddDto {
 	private int workTypeId;
 	private int maxSalary;
 	private int minSalary;
+	private boolean enable;
+	private boolean confirm;
 
 }

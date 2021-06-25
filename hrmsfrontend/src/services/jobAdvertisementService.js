@@ -41,4 +41,12 @@ export default class JobAdvertisementService {
     axios.post(`${this.apiUrl}add`, jobAdvertisement);
   }
 
+  update(jobAdvertisementId, jobAdvertisement) {
+    axios.put(`${this.apiUrl}update?jobAdvertisemenetId=${jobAdvertisementId}`, jobAdvertisement)
+  }
+
+  confirmation(jobAdvertisementId, confirm) {
+    axios.put(`${this.apiUrl}confirmation?confirm=${confirm}&jobAdvertisemenetId=${jobAdvertisementId}`)
+  }
+
 }

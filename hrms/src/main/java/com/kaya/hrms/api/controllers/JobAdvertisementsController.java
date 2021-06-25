@@ -15,8 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.kaya.hrms.business.abstracts.JobAdvertisementService;
 import com.kaya.hrms.core.utilities.results.DataResult;
 import com.kaya.hrms.core.utilities.results.Result;
-import com.kaya.hrms.entities.Dtos.JobAdvertisementAddDto;
-import com.kaya.hrms.entities.Dtos.JobAdvertisementWithCompanyDto;
+import com.kaya.hrms.entities.Dtos.JobAdvertisementDtos.JobAdvertisementAddDto;
+import com.kaya.hrms.entities.Dtos.JobAdvertisementDtos.JobAdvertisementUpdateDto;
+import com.kaya.hrms.entities.Dtos.JobAdvertisementDtos.JobAdvertisementWithCompanyDto;
 import com.kaya.hrms.entities.concretes.JobAdvertisement;
 
 @RestController
@@ -65,6 +66,11 @@ public class JobAdvertisementsController {
 		return this.jobAdvertisementService.getJobAdvertisementWithCompany();
 	}
 	
+	@GetMapping("/getJobAdvertisementsNonConfirm")
+	public DataResult<List<JobAdvertisementWithCompanyDto>> getJobAdvertisementsNonConfirm() {
+		return this.jobAdvertisementService.getJobAdvertisementsNonConfirm();
+	}
+	
 	@GetMapping("/getJobAdvertisementWithCompanyOrderByCreatedAt")
 	public DataResult<List<JobAdvertisementWithCompanyDto>> getJobAdvertisementWithCompanyOrderByCreatedAt() {
 		return this.jobAdvertisementService.getJobAdvertisementWithCompanyOrderByCreatedAt();
@@ -85,8 +91,14 @@ public class JobAdvertisementsController {
 	@PutMapping("/update")
 	public Result update(
 			@RequestParam("jobAdvertisemenetId") int jobAdvertisemenetId,
-			@RequestBody JobAdvertisement jobAdvertisement) {
-		return this.jobAdvertisementService.update(jobAdvertisemenetId, jobAdvertisement);
+			@RequestBody JobAdvertisementUpdateDto jobAdvertisementUpdateDto) {
+		return this.jobAdvertisementService.update(jobAdvertisemenetId, jobAdvertisementUpdateDto);
+	}
+
+	@PutMapping("/confirmation")
+	public Result confirmation(@RequestParam("jobAdvertisemenetId") int jobAdvertisementId,
+			@RequestParam("confirm") boolean confirm) {
+		return this.jobAdvertisementService.confirmation(jobAdvertisementId, confirm);
 	}
 	
 }

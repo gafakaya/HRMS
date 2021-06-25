@@ -4,8 +4,9 @@ import java.util.List;
 
 import com.kaya.hrms.core.utilities.results.DataResult;
 import com.kaya.hrms.core.utilities.results.Result;
-import com.kaya.hrms.entities.Dtos.JobAdvertisementAddDto;
-import com.kaya.hrms.entities.Dtos.JobAdvertisementWithCompanyDto;
+import com.kaya.hrms.entities.Dtos.JobAdvertisementDtos.JobAdvertisementAddDto;
+import com.kaya.hrms.entities.Dtos.JobAdvertisementDtos.JobAdvertisementUpdateDto;
+import com.kaya.hrms.entities.Dtos.JobAdvertisementDtos.JobAdvertisementWithCompanyDto;
 import com.kaya.hrms.entities.concretes.JobAdvertisement;
 
 public interface JobAdvertisementService {
@@ -19,8 +20,10 @@ public interface JobAdvertisementService {
 	DataResult<List<JobAdvertisement>> getByEnableSortedAsc();
 
 	DataResult<List<JobAdvertisement>> getByEnableSortedDesc();
-	
+
 	DataResult<List<JobAdvertisementWithCompanyDto>> getJobAdvertisementWithCompany();
+	
+	DataResult<List<JobAdvertisementWithCompanyDto>> getJobAdvertisementsNonConfirm();
 	
 	DataResult<List<JobAdvertisementWithCompanyDto>> getJobAdvertisementWithCompanyOrderByCreatedAt();
 
@@ -29,7 +32,10 @@ public interface JobAdvertisementService {
 
 	Result add(JobAdvertisementAddDto jobAdvertisementAddDto);
 	
-	Result update(int jobAdvertisemenetId, JobAdvertisement jobAdvertisemenet);
-
+	Result update(int jobAdvertisementId, JobAdvertisementUpdateDto jobAdvertisementUpdateDto);
+	
+	Result delete(int jobAdvertisementId);
+	
+	Result confirmation(int jobAdvertisementId, boolean confirm);
 
 }

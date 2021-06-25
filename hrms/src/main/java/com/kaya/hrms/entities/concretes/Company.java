@@ -34,6 +34,8 @@ public class Company extends User {
 	private String companyName;
 	@Column(name="is_active")
 	private boolean isActive;
+	@Column(name="confirm")
+	private boolean confirm;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "company")
@@ -47,11 +49,13 @@ public class Company extends User {
 			String companyName,
 			String webSite,
 			String phone,
-			boolean isActive) {
+			boolean isActive,
+			boolean confirm) {
 		super(id, email, password, createdAt);
 		this.companyName = companyName;
 		this.webSite = webSite;
 		this.phone = phone;
 		this.isActive = isActive;
+		this.confirm = confirm;
 	}
 }

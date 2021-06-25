@@ -47,6 +47,7 @@ public class AuthManager implements AuthService {
 		if (!jobSeekerDto.getPassword().equals(jobSeekerDto.getPasswordConfirm())) {
 			return new ErrorResult(Messages.ERROR_PASSWORD_CONFIRM);
 		}
+		
 		Result result = this.JobSeekerService.add(new JobSeeker(
 				0,
 				jobSeekerDto.getEmail(),
@@ -86,7 +87,8 @@ public class AuthManager implements AuthService {
 				companyDto.getCompanyName(),
 				companyDto.getWebSite(),
 				companyDto.getPhone(),
-				false				
+				false,
+				false
 		));
 		if (!result.isSuccess()) {
 			return new ErrorResult(result.getMessage());

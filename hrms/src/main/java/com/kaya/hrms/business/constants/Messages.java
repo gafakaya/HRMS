@@ -78,6 +78,10 @@ public class Messages {
 			"City added.";
 	
 
+	public static String JOB_ADVERTISEMENT_DELETED = 
+			"Job advertisement deleted.";
+	public static String JOB_ADVERTISEMENT_CONFIRMED = 
+			"Job advertisement confirmed.";
 	public static String JOB_ADVERTISEMENT_LISTED = 
 			"Job advertisement listed..";
 	public static String JOB_ADVERTISEMENT_LISTED_BY_ENABLE = 
@@ -93,6 +97,9 @@ public class Messages {
 			"Validation errors.";
 	public static String JOB_ADVERTISEMENT_DTO_LISTED = 
 			"Job advertisement dto listed.";
+
+	public static String JOB_ADVERTISEMENT_NONCONFIRM_LISTED =
+			"Job advertisement dto nonconfirm listed.";
 	
 //	EVENT:---------------------------------------------	
 	public static String EVENT_ADDED = 
@@ -115,6 +122,5 @@ public class Messages {
 			"Events paged order by date of event.(ASC)";
 	public static String ERROR_EVENT_DATE_OUT_OF_DATE =
 			"Event date is out of date.";
-	
 	
 }
