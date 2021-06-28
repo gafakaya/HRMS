@@ -112,10 +112,16 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 	}
 
 	@Override
+	public DataResult<JobAdvertisementWithCompanyDto> getJobAdvertisementWithCompanyById(int jobAdvertisementId) {
+		JobAdvertisementWithCompanyDto result = this.jobAdvertisementDao.getJobAdvertisementWithCompanyById(jobAdvertisementId);
+		return new SuccessDataResult<JobAdvertisementWithCompanyDto>(result);
+	}
+
+	@Override
 	public DataResult<List<JobAdvertisementWithCompanyDto>> getJobAdvertisementsNonConfirm() {
 		List<JobAdvertisementWithCompanyDto> result = this.jobAdvertisementDao.getJobAdvertisementsNonConfirm();
 		return new SuccessDataResult<List<JobAdvertisementWithCompanyDto>>(
-				result, 
+				result,
 				Messages.JOB_ADVERTISEMENT_NONCONFIRM_LISTED);
 	}
 	

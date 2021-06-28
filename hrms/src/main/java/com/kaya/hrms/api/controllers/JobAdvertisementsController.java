@@ -66,6 +66,11 @@ public class JobAdvertisementsController {
 		return this.jobAdvertisementService.getJobAdvertisementWithCompany();
 	}
 	
+	@GetMapping("/getJobAdvertisementWithCompanyById")
+	public DataResult<JobAdvertisementWithCompanyDto> getJobAdvertisementWithCompanyById(@RequestParam int jobAdvertisementId) {
+		return this.jobAdvertisementService.getJobAdvertisementWithCompanyById(jobAdvertisementId);
+	}
+	
 	@GetMapping("/getJobAdvertisementsNonConfirm")
 	public DataResult<List<JobAdvertisementWithCompanyDto>> getJobAdvertisementsNonConfirm() {
 		return this.jobAdvertisementService.getJobAdvertisementsNonConfirm();

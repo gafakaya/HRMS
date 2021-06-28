@@ -20,27 +20,32 @@ function Sidebar() {
           <b className="logo">JobHub</b>
         </Link>
       </div>
-      <SidebarOption Icon={AccountCircleIcon} title="Profile" />
-      <Link className="link" to={`/jobAdvertisements/`}>
-        <SidebarOption Icon={BusinessCenterIcon} title="Job Advertisements" />
-      </Link>
-      <Link className="link" to={`/companies/`}>
-        <SidebarOption Icon={BusinessIcon} title="Companies" />
-      </Link>
-      <SidebarOption Icon={AssignmentIcon} title="Resume" />
-      <SidebarOption Icon={PeopleIcon} title="Friends" />
+
+      <SidebarOption
+        Icon={AccountCircleIcon}
+        avatar="https://cdn.discordapp.com/avatars/713735093159460887/9644e6ad8f50b1f2f6b4e3abe0649781.webp?size=256" 
+        title="Mehmet Kaya"
+        path="/jobSeeker/3/profile/"
+      />
+      <SidebarOption
+        Icon={BusinessCenterIcon}
+        title="Job Advertisements"
+        path="/jobAdvertisements/"
+      />
+      <SidebarOption Icon={BusinessIcon} title="Companies" path="/companies/" />
+      <SidebarOption Icon={AssignmentIcon} title="Resume" path="/resume/" />
+      <SidebarOption Icon={PeopleIcon} title="Friends"  path="/friends/"/>
 
       <div className="sidebar__footer">
-        <SidebarOption Icon={SettingsIcon} title="Settings" />
-        <SidebarOption Icon={ExitToAppIcon} title="Logout" />
+        <SidebarOption Icon={SettingsIcon} title="Settings"  path="/settings/" />
+        <SidebarOption Icon={ExitToAppIcon} title="Logout" path="/login/"  />
         <div className="created__by__mehmetkaya">
           <span className="K">
             {/* <a
               href="https://www.linkedin.com/in/mehmet-kaya-14867720a/"
               target="_blank"
             > */}
-              K
-            {/* </a> */}
+            K{/* </a> */}
           </span>{" "}
           <span className="text">Created by Mehmet Kaya</span>
         </div>

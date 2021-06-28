@@ -1,4 +1,4 @@
-package com.kaya.hrms.entities.Dtos;
+package com.kaya.hrms.entities.Dtos.JobSeekerDtos;
 
 import java.time.LocalDate;
 

@@ -23,6 +23,8 @@ public interface JobAdvertisementService {
 
 	DataResult<List<JobAdvertisementWithCompanyDto>> getJobAdvertisementWithCompany();
 	
+	DataResult<JobAdvertisementWithCompanyDto> getJobAdvertisementWithCompanyById(int jobAdvertisementId);
+	
 	DataResult<List<JobAdvertisementWithCompanyDto>> getJobAdvertisementsNonConfirm();
 	
 	DataResult<List<JobAdvertisementWithCompanyDto>> getJobAdvertisementWithCompanyOrderByCreatedAt();

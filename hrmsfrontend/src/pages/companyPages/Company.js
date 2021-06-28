@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Avatar, makeStyles } from "@material-ui/core";
-import "../styles/Company.css";
-import CompanyService from "../services/companyService";
+import "../../styles/companyStyles/Company.css"
+import CompanyService from "../../services/companyService";
 import EventAvailableIcon from "@material-ui/icons/EventAvailable";
 import AssignmentIcon from "@material-ui/icons/Assignment";
+import DirectionsIcon from '@material-ui/icons/Directions';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,7 +33,7 @@ function Company() {
     companyService
       .getCompanies()
       .then((result) => setCompanies(result.data.data));
-  }, [companies]);
+  }, []);
 
   return (
     <div>
@@ -59,6 +61,12 @@ function Company() {
               <AssignmentIcon />
               <b className="company__footer__item">12</b>
             </div>
+            <Link className="link" to={`/company/${company.id}`}>
+            <div className="jobAdvertisement__footer__elements jobAdvertisement__detail">
+              <DirectionsIcon className="footer__icon" />
+              <b>Go Advert</b>
+            </div>
+            </Link>
           </div>
         </div>
       ))}

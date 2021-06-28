@@ -12,22 +12,22 @@ import com.kaya.hrms.business.constants.Messages;
 import com.kaya.hrms.core.utilities.results.ErrorResult;
 import com.kaya.hrms.core.utilities.results.Result;
 import com.kaya.hrms.core.utilities.results.SuccessResult;
-import com.kaya.hrms.entities.Dtos.CompanyRegisterDto;
-import com.kaya.hrms.entities.Dtos.JobSeekerRegisterDto;
+import com.kaya.hrms.entities.Dtos.CompanyDtos.CompanyRegisterDto;
+import com.kaya.hrms.entities.Dtos.JobSeekerDtos.JobSeekerRegisterDto;
 import com.kaya.hrms.entities.concretes.Company;
 import com.kaya.hrms.entities.concretes.JobSeeker;
 
 @Service
 public class AuthManager implements AuthService {
 
-	private JobSeekerService JobSeekerService;
+	private JobSeekerService jobSeekerService;
 	private CompanyService companyService;
 	
 	@Autowired
 	public AuthManager(
 			JobSeekerService jobSeekerService,
 			CompanyService companyService) {
-		JobSeekerService = jobSeekerService;
+		this.jobSeekerService = jobSeekerService;
 		this.companyService = companyService;
 	}
 
@@ -48,7 +48,7 @@ public class AuthManager implements AuthService {
 			return new ErrorResult(Messages.ERROR_PASSWORD_CONFIRM);
 		}
 		
-		Result result = this.JobSeekerService.add(new JobSeeker(
+		Result result = this.jobSeekerService.add(new JobSeeker(
 				0,
 				jobSeekerDto.getEmail(),
 				jobSeekerDto.getPassword(),

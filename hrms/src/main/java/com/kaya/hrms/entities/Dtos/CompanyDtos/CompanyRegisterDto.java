@@ -1,4 +1,4 @@
-package com.kaya.hrms.entities.Dtos;
+package com.kaya.hrms.entities.Dtos.CompanyDtos;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;

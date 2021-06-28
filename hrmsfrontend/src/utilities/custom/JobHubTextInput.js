@@ -3,12 +3,12 @@ import React from "react";
 import { Label } from "semantic-ui-react";
 import "../../styles/JobHubFormElements.css";
 
-function JobHubTextInput({ ...props }) {
+function JobHubTextInput({ ...props}) {
   const [field, meta] = useField(props);
 
   return (
     <div className="jobHub__input">
-      <input className="jobHub__input--text" {...field} {...props} />
+      <input className={`jobHub__input--text ${props.large && "large"}` } {...field} {...props} />
       <div>
         {meta.touched && !!meta.error ? (
           <Label

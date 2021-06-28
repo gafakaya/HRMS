@@ -21,8 +21,8 @@ import com.kaya.hrms.business.concretes.AuthManager;
 import com.kaya.hrms.business.constants.Messages;
 import com.kaya.hrms.core.utilities.results.ErrorDataResult;
 import com.kaya.hrms.core.utilities.results.Result;
-import com.kaya.hrms.entities.Dtos.CompanyRegisterDto;
-import com.kaya.hrms.entities.Dtos.JobSeekerRegisterDto;
+import com.kaya.hrms.entities.Dtos.CompanyDtos.CompanyRegisterDto;
+import com.kaya.hrms.entities.Dtos.JobSeekerDtos.JobSeekerRegisterDto;
 
 @RestController
 @RequestMapping("/api/")

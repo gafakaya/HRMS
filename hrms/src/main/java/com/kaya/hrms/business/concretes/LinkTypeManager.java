@@ -30,6 +30,12 @@ public class LinkTypeManager implements LinkTypeService {
 	}
 
 	@Override
+	public DataResult<LinkType> getById(int linkTypeId) {
+		LinkType result = this.linkTypeDao.getById(linkTypeId);
+		return new SuccessDataResult<LinkType>(result);
+	}
+
+	@Override
 	public Result add(LinkType linkType) {
 		this.linkTypeDao.save(linkType);
 		return new SuccessResult();

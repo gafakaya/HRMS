@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.kaya.hrms.business.abstracts.SocialMediaService;
 import com.kaya.hrms.core.utilities.results.DataResult;
 import com.kaya.hrms.core.utilities.results.Result;
+import com.kaya.hrms.entities.Dtos.SocialMediaDtos.SocialMediaAddDto;
+import com.kaya.hrms.entities.Dtos.SocialMediaDtos.SocialMediaUpdateDto;
 import com.kaya.hrms.entities.concretes.SocialMedia;
 
 @RestController
@@ -41,6 +44,11 @@ public class SocialMediasController {
 	@PostMapping("/add")
 	public Result add(@RequestBody SocialMedia socialMedia) {
 		return this.socialMediaService.add(socialMedia);
+	}
+
+	@PutMapping("/update")
+	public Result update(@RequestBody  SocialMedia socialMedia) {
+		return this.socialMediaService.update(socialMedia);
 	}
 	
 	

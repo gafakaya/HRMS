@@ -15,7 +15,6 @@ import com.kaya.hrms.business.abstracts.JobSeekerService;
 import com.kaya.hrms.business.abstracts.JobSeekerWorkplaceTitleService;
 import com.kaya.hrms.business.abstracts.SocialMediaService;
 import com.kaya.hrms.business.constants.Messages;
-import com.kaya.hrms.business.validationRules.EmailValidator;
 import com.kaya.hrms.core.adapters.MernisService;
 import com.kaya.hrms.core.utilities.business.BusinessRules;
 import com.kaya.hrms.core.utilities.results.DataResult;
@@ -26,6 +25,7 @@ import com.kaya.hrms.core.utilities.results.SuccessDataResult;
 import com.kaya.hrms.core.utilities.results.SuccessResult;
 import com.kaya.hrms.dataAccess.abstracts.JobSeekerDao;
 import com.kaya.hrms.entities.Dtos.CvDto;
+import com.kaya.hrms.entities.Dtos.JobSeekerDtos.JobSeekerUpdateDto;
 import com.kaya.hrms.entities.concretes.JobSeeker;
 
 @Service
@@ -41,6 +41,7 @@ public class JobSeekerManager implements JobSeekerService {
 	private SocialMediaService socialMediaService;
 	private CvDetailService cvDetailService;
 	
+	@Autowired
 	public JobSeekerManager(
 			JobSeekerDao jobSeekerDao,
 			VerificationManager verificationManager,
@@ -144,7 +145,7 @@ public class JobSeekerManager implements JobSeekerService {
 	}
 
 	@Override
-	public Result update(int jobSeekerId, JobSeeker jobSeeker) {
+	public Result update(int jobSeekerId, JobSeekerUpdateDto jobSeekerUpdateDto) {
 		
 		Result rules = BusinessRules.Run(checkUserExistsById(jobSeekerId));
 		
@@ -154,11 +155,14 @@ public class JobSeekerManager implements JobSeekerService {
 		
 		JobSeeker result = getById(jobSeekerId).getData();
 		
-		result.setFirstName(jobSeeker.getFirstName());
-		result.setLastName(jobSeeker.getLastName());
-		result.setPassword(jobSeeker.getPassword());
+		result.setFirstName(jobSeekerUpdateDto.getFirstName());
+		result.setLastName(jobSeekerUpdateDto.getLastName());
+		result.setEmail(jobSeekerUpdateDto.getEmail());
+		result.setDayOfBirth(jobSeekerUpdateDto.getDayOfBirth());
 		
-		return null;
+		this.jobSeekerDao.save(result);
+		
+		return new SuccessResult(Messages.JOB_SEEKER_UPDATED);
 	}
 	
 	

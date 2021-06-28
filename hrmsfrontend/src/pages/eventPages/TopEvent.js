@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import "../styles/Event.css";
+import "../../styles/eventStyles/Event.css";
 // import FlipMove from "react-flip-move";
-import EventService from "../services/eventService";
+import EventService from "../../services/eventService";
 
 function Event() {
   const [events, setEvents] = useState([]);
@@ -11,7 +11,7 @@ function Event() {
     eventService
       .getEventsOrderByDateOfEventPaged()
       .then((result) => setEvents(result.data.data));
-  }, [events]);
+  }, []);
 
   return (
     <div className="event">

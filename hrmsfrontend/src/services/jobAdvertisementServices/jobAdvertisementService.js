@@ -14,11 +14,15 @@ export default class JobAdvertisementService {
   }
 
   getJobAdvertisementsByEnableAndCompanyName(companyName) {
-    return axios.get(`${this.apiUrl}getByEnableAndCompany_companyName?companyName=${companyName}`);
+    return axios.get(
+      `${this.apiUrl}getByEnableAndCompany_companyName?companyName=${companyName}`
+    );
   }
 
   getJobAdvertisementsByEnablePage(pageNo, pageSize) {
-    return axios.get(`${this.apiUrl}getByEnablePage?pageNo=${pageNo}&pageSize=${pageSize}`);
+    return axios.get(
+      `${this.apiUrl}getByEnablePage?pageNo=${pageNo}&pageSize=${pageSize}`
+    );
   }
 
   getJobAdvertisementsByEnableSortedAsc() {
@@ -33,8 +37,20 @@ export default class JobAdvertisementService {
     return axios.get(`${this.apiUrl}getJobAdvertisementWithCompany`);
   }
 
+  getJobAdvertisementWithCompanyById(jobAdvertisementId) {
+    return axios.get(
+      `${this.apiUrl}getJobAdvertisementWithCompanyById?jobAdvertisementId=${jobAdvertisementId}`
+    );
+  }
+
+  getJobAdvertisementsNonConfirm() {
+    return axios.get(`${this.apiUrl}getJobAdvertisementsNonConfirm`);
+  }
+
   getJobAdvertisementsWithCompanyOrderByCreatedAt() {
-    return axios.get(`${this.apiUrl}getJobAdvertisementWithCompanyOrderByCreatedAt`);
+    return axios.get(
+      `${this.apiUrl}getJobAdvertisementWithCompanyOrderByCreatedAt`
+    );
   }
 
   add(jobAdvertisement) {
@@ -42,11 +58,15 @@ export default class JobAdvertisementService {
   }
 
   update(jobAdvertisementId, jobAdvertisement) {
-    axios.put(`${this.apiUrl}update?jobAdvertisemenetId=${jobAdvertisementId}`, jobAdvertisement)
+    axios.put(
+      `${this.apiUrl}update?jobAdvertisemenetId=${jobAdvertisementId}`,
+      jobAdvertisement
+    );
   }
 
   confirmation(jobAdvertisementId, confirm) {
-    axios.put(`${this.apiUrl}confirmation?confirm=${confirm}&jobAdvertisemenetId=${jobAdvertisementId}`)
+    axios.put(
+      `${this.apiUrl}confirmation?confirm=${confirm}&jobAdvertisemenetId=${jobAdvertisementId}`
+    );
   }
-
 }

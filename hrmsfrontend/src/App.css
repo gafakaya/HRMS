@@ -2,7 +2,8 @@ body {
   --jobhub-color-primary: #E4B073;
   --jobhub-color-secondary: #BDBDBD;
   --jobhub-color-tertiary: #9A9A9A;
-  --jobhub-color-danger: #E27C7C;
+  --jobhub-color-success: #42AB47;
+  --jobhub-color-danger: #DD4D4D;
   --jobhub-background-color-primary: #373C3F;
   --jobhub-background-color-secondary: #2F3437;
   --jobhub-background-color-tertiary: #46494B;

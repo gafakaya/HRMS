@@ -9,6 +9,8 @@ import com.kaya.hrms.entities.concretes.LinkType;
 public interface LinkTypeService {
 	
 	DataResult<List<LinkType>> getAll();
+	
+	DataResult<LinkType> getById(int linkTypeId);
 
 	Result add(LinkType linkType);
 }

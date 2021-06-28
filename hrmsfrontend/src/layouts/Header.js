@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/Header.css";
+import "../styles/Header.css"
 import SearchIcon from "@material-ui/icons/Search";
 import HeaderOption from "./HeaderOption";
 import EventAvailableIcon from "@material-ui/icons/EventAvailable";
@@ -21,9 +21,9 @@ function Header() {
           </form>
       </div>
       <div className="header__options">
-        <HeaderOption Icon={EventAvailableIcon} title="Events" />
-        <HeaderOption Icon={NotificationsIcon} title="Notifications" />
-        <HeaderOption Icon={MessageIcon} title="Messages" />
+        <HeaderOption Icon={EventAvailableIcon} title="Events" path="/events" />
+        <HeaderOption Icon={NotificationsIcon} title="Notifications"path="/notifications"  />
+        <HeaderOption Icon={MessageIcon} title="Messages" path="/messages"  />
       </div>
     </div>
   );

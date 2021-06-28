@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Avatar, makeStyles } from "@material-ui/core";
-import JobAdvertisementService from "../services/jobAdvertisementService";
-import "../styles/JobAdvertisement.css";
+import JobAdvertisementService from "../../services/jobAdvertisementServices/jobAdvertisementService";
+import "../../styles/jobAdvertisementStyles/JobAdvertisement.css";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import StarIcon from "@material-ui/icons/Star";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import InsertCommentIcon from "@material-ui/icons/InsertComment";
 import AssignmentIcon from "@material-ui/icons/Assignment";
+import DirectionsIcon from '@material-ui/icons/Directions';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,7 +45,7 @@ function JobAdvertisement() {
     jobAdvertisementService
       .getJobAdvertisementsWithCompanyOrderByCreatedAt()
       .then((result) => setJobAdvertisements(result.data.data));
-  }, [jobAdvertisements]);
+  }, []);
 
   return (
     <div>
@@ -118,15 +120,21 @@ function JobAdvertisement() {
           </div>
           <div className="jobAdvertisement__footer">
             <div className="jobAdvertisement__footer__elements jobAdvertisement__like">
-              <ThumbUpIcon className="like__icon" />
+              <ThumbUpIcon className="footer__icon" />
               <b>{jobAdvertisement.like}</b>
             </div>
+            <Link className="link" to={`/jobAdvertisements/${jobAdvertisement.id}`}>
+            <div className="jobAdvertisement__footer__elements jobAdvertisement__detail">
+              <DirectionsIcon className="footer__icon" />
+              <b>Go Advert</b>
+            </div>
+            </Link>
             <div className="jobAdvertisement__footer__elements jobAdvertisement__comment">
-              <InsertCommentIcon className="comment__icon" />
+              <InsertCommentIcon className="footer__icon" />
               <b>45</b>
             </div>
             <div className="jobAdvertisement__footer__elements jobAdvertisement__application">
-              <AssignmentIcon className="application__icon" />
+              <AssignmentIcon className="footer__icon" />
               <b>14</b>
             </div>
           </div>

@@ -1,12 +1,12 @@
 import React from "react";
 import "../styles/RightSection.css";
-import Event from "../pages/Event";
+import TopEvent from "../pages/eventPages/TopEvent"
 
 function RightSection() {
   return (
     <div className="rightSection">
       {/* Event */}
-      <Event />
+      <TopEvent />
       {/* Notification */}
       {/* Message */}
     </div>

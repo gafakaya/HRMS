@@ -7,7 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.kaya.hrms.entities.concretes.SocialMedia;
 
 public interface SocialMediaDao extends JpaRepository<SocialMedia, Integer> {
-	
+
 	List<SocialMedia> getByJobSeeker_id(int jobSeekerId);
+	
+	SocialMedia getByJobSeeker_idAndLinkType_linkTypeId(int jobSeekerId, int linkTyepId);
 
 }

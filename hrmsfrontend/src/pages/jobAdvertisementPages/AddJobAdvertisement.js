@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
-import "../styles/AddJobAdvertisement.css";
+import "../../styles/jobAdvertisementStyles/AddJobAdvertisement.css";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import CityService from "../services/cityService";
-import JobTitleService from "../services/jobTitleService";
-import WorkTimeService from "../services/workTimeService";
-import WorkTypeService from "../services/workTypeService";
-import JobAdvertisementService from "../services/jobAdvertisementService";
+import CityService from "../../services/cityService";
+import JobTitleService from "../../services/jobTitleService";
+import WorkTimeService from "../../services/workTimeService";
+import WorkTypeService from "../../services/workTypeService";
+import JobAdvertisementService from "../../services/jobAdvertisementServices/jobAdvertisementService";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import { Button } from "@material-ui/core";
-import JobHubTextInput from "../utilities/custom/JobHubTextInput";
-import JobHubDropdown from "../utilities/custom/JobHubDropdown";
-import JobHubTextArea from "../utilities/custom/JobHubTextArea";
+import JobHubTextInput from "../../utilities/custom/JobHubTextInput";
+import JobHubDropdown from "../../utilities/custom/JobHubDropdown";
+import JobHubTextArea from "../../utilities/custom/JobHubTextArea";
 // import { useHistory } from "react-router-dom";
 
 function AddJobAdvertisement() {
@@ -132,17 +132,7 @@ function AddJobAdvertisement() {
           alert(JSON.stringify(values, null, 2));
         }}
       >
-        {({
-          values,
-          touched,
-          errors,
-          dirty,
-          isSubmitting,
-          handleSubmit,
-          handleReset,
-          handleChange,
-          setFieldValue,
-        }) => (
+        {({ dirty, isSubmitting, handleSubmit, setFieldValue }) => (
           <form onSubmit={handleSubmit}>
             <div className="addJobAdvertisement__body">
               <div className="addJobAdvertisement__body__description">

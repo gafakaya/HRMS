@@ -1,7 +1,7 @@
 # HRMS
 <h3>HRMS DATABASE</h3>
 
-![hrmsdatabase1](https://user-images.githubusercontent.com/81460760/121386494-b79db780-c952-11eb-911a-b039f7047a77.png)
+![hrmsdata](https://user-images.githubusercontent.com/81460760/123632234-5d409a00-d820-11eb-8a3a-47520541072f.png)
 
 <h2>Site:</h2>
 
