@@ -41,13 +41,18 @@ public class SocialMediasController {
 		return this.socialMediaService.getByJobSeeker_id(jobSeekerId);
 	}
 	
+	@GetMapping("/getByJobSeekerIdAndLinkTyepId")
+	public DataResult <SocialMedia> getByJobSeeker_idAndLinkType_linkTypeId(int jobSeekerId,int linkTypeId) {
+		return this.socialMediaService.getByJobSeeker_idAndLinkType_linkTypeId(jobSeekerId, linkTypeId);
+	}
+	
 	@PostMapping("/add")
 	public Result add(@RequestBody SocialMedia socialMedia) {
 		return this.socialMediaService.add(socialMedia);
 	}
 
 	@PutMapping("/update")
-	public Result update(@RequestBody  SocialMedia socialMedia) {
+	public Result update(@RequestBody SocialMedia socialMedia) {
 		return this.socialMediaService.update(socialMedia);
 	}
 	

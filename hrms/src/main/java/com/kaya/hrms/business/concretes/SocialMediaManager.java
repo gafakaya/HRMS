@@ -45,6 +45,12 @@ public class SocialMediaManager implements SocialMediaService {
 	}
 
 	@Override
+	public DataResult<SocialMedia> getByJobSeeker_idAndLinkType_linkTypeId(int jobSeekerId,int linkTypeId) {
+		SocialMedia result = this.socialMediaDao.getByJobSeeker_idAndLinkType_linkTypeId(jobSeekerId, linkTypeId);
+		return new SuccessDataResult<SocialMedia>(result);
+	}
+
+	@Override
 	public Result add(SocialMedia socialMedia) {
 		
 		this.socialMediaDao.save(socialMedia);
@@ -52,8 +58,7 @@ public class SocialMediaManager implements SocialMediaService {
 	}
 	@Override
 	public Result update(SocialMedia socialMedia) {
-		
-		
+
 		this.socialMediaDao.save(socialMedia);
 		return new SuccessResult();
 	}

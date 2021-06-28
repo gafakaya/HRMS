@@ -15,12 +15,16 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import { useEffect } from "react";
 import JobSeekerService from "../../services/jobSeekerServices/jobSeekerService";
 import JobSeekerPhotoService from "../../services/jobSeekerServices/jobSeekerPhotoService";
-import { makeStyles } from "@material-ui/core";
+import { IconButton, makeStyles } from "@material-ui/core";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import JobHubTextInput from "../../utilities/custom/JobHubTextInput";
 import CancelIcon from "@material-ui/icons/Cancel";
 import SaveIcon from "@material-ui/icons/Save";
+import JobSeekerProfileSocial from "./JobSeekerProfileSocial";
+import LanguageIcon from "@material-ui/icons/Language";
+import EmojiObjectsIcon from "@material-ui/icons/EmojiObjects";
+import AddCircleIcon from "@material-ui/icons/AddCircle";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -46,6 +50,7 @@ function JobSeekerProfile() {
   const [jobSeekerPhoto, setJobSeekerPhoto] = useState({});
   const [open, setOpen] = useState(false);
   const jobSeekerService = new JobSeekerService();
+  const jobSeekerPhotoService = new JobSeekerPhotoService();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -56,10 +61,10 @@ function JobSeekerProfile() {
   };
 
   const initialValues = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    dayOfBirth: "",
+    firstName: `${jobSeeker.firstName}`,
+    lastName: `${jobSeeker.lastName}`,
+    email: `${jobSeeker.email}`,
+    dayOfBirth: `${jobSeeker.dayOfBirth}`,
   };
 
   const schema = Yup.object().shape({
@@ -76,7 +81,6 @@ function JobSeekerProfile() {
       .getById(3)
       .then((result) => setJobSeeker(result.data.data));
 
-    const jobSeekerPhotoService = new JobSeekerPhotoService();
     jobSeekerPhotoService
       .getJobSeekerPhotosByJobSeekerId(3)
       .then((result) => setJobSeekerPhoto(result.data.data));
@@ -112,14 +116,6 @@ function JobSeekerProfile() {
             </span>
           </div>
         </div>
-        <Button
-          startIcon={<SaveIcon />}
-          variant="contained"
-          className="jobHub__button--submit"
-          onClick={handleClickOpen}
-        >
-          Update
-        </Button>
         <Dialog
           open={open}
           onClose={handleClose}
@@ -231,20 +227,37 @@ function JobSeekerProfile() {
             </Formik>
           </DialogContent>
         </Dialog>
-        <div className="jobSeeker__body__social">
-          <div className="jobSeeker__body__social--github">
-            <h3>Github</h3>
-          </div>
-          <div className="jobSeeker__body__social--linkedin">
-            <h3>Linkedin</h3>
-          </div>
-        </div>
+        <Button
+          startIcon={<SaveIcon />}
+          variant="contained"
+          className="jobHub__button--submit"
+          onClick={handleClickOpen}
+        >
+          Update
+        </Button>
+        <JobSeekerProfileSocial />
         <div className="jobSeeker__body__various__information">
-          <div className="jobSeeker__body__vi--languages">
-            <h3>Languages</h3>
+          <div className="jobSeeker__body__vi jobSeeker__body__vi--languages">
+            <div className="jobSeeker__body__vi__header">
+              <div className="jobSeeker__body__vi__header--title">
+                <LanguageIcon />
+                <b>Languages</b>
+              </div>
+              <IconButton>
+                <AddCircleIcon className="vi__add" />
+              </IconButton>
+            </div>
           </div>
-          <div className="jobSeeker__body__vi--abilities">
-            <h3>Abilities</h3>
+          <div className="jobSeeker__body__vi jobSeeker__body__vi--abilities">
+            <div className="jobSeeker__body__vi__header">
+              <div className="jobSeeker__body__vi__header--title">
+                <EmojiObjectsIcon />
+                <b>Abilities</b>
+              </div>
+              <IconButton>
+                <AddCircleIcon className="vi__add" />
+              </IconButton>
+            </div>
           </div>
         </div>
       </div>

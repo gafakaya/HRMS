@@ -15,11 +15,17 @@ export default class SocialMediaService {
     );
   }
 
+  getByJobSeekerIdAndLinkTyepId(jobSeekerId, linkTypeId) {
+    return axios.get(
+      `${this.apiUrl}getByJobSeekerIdAndLinkTyepId?jobSeekerId=${jobSeekerId}&linkTypeId=${linkTypeId}`
+    );
+  }
+
   add(socialMedia) {
     return axios.post(`${this.apiUrl}add`, socialMedia);
   }
 
   update(socialMedia) {
-    return axios.post(`${this.apiUrl}add`, socialMedia);
+    return axios.put(`${this.apiUrl}update`, socialMedia);
   }
 }

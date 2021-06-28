@@ -8,7 +8,7 @@ function JobHubTextInput({ ...props}) {
 
   return (
     <div className="jobHub__input">
-      <input className={`jobHub__input--text ${props.large && "large"}` } {...field} {...props} />
+      <input className={`jobHub__input--text ${props.responsive && "responsive"} ${props.large && "large"}` } {...field} {...props} />
       <div>
         {meta.touched && !!meta.error ? (
           <Label

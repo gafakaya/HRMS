@@ -14,6 +14,8 @@ public interface SocialMediaService {
 	
 	DataResult<List<SocialMedia>> getByJobSeeker_id(int jobSeekerId);
 	
+	DataResult <SocialMedia> getByJobSeeker_idAndLinkType_linkTypeId(int jobSeekerId,int linkTypeId);
+	
 	Result add(SocialMedia socialMedia);
 
 	Result update(SocialMedia socialMedia);
