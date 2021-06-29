@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -41,6 +42,11 @@ public class JobSeekerAbilitiesController {
 	@PostMapping("/add")
 	public Result add(@RequestBody JobSeekerAbility jobSeekerAbility) {
 		return this.jobSeekerAbilityService.add(jobSeekerAbility);
+	}
+	
+	@DeleteMapping("/delete")
+	public Result delete(int jobSeekerAbilityId) {
+		return this.jobSeekerAbilityService.delete(jobSeekerAbilityId);
 	}
 	
 }

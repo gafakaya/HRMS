@@ -40,6 +40,12 @@ public class JobSeekerAbilityManager implements JobSeekerAbilityService {
 		this.jobSeekerAbilityDao.save(jobSeekerAbility);
 		return new SuccessResult();
 	}
+
+	@Override
+	public Result delete(int jobSeekerAbilityId) {
+		this.jobSeekerAbilityDao.deleteById(jobSeekerAbilityId);
+		return new SuccessResult();
+	}
 	
 	
 	

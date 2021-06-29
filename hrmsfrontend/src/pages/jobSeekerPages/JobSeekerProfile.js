@@ -22,9 +22,10 @@ import JobHubTextInput from "../../utilities/custom/JobHubTextInput";
 import CancelIcon from "@material-ui/icons/Cancel";
 import SaveIcon from "@material-ui/icons/Save";
 import JobSeekerProfileSocial from "./JobSeekerProfileSocial";
-import LanguageIcon from "@material-ui/icons/Language";
-import EmojiObjectsIcon from "@material-ui/icons/EmojiObjects";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
+import JobSeekerProfileUpdate from "./JobSeekerProfileUpdate";
+import JobSeekerLangUpdate from "./JobSeekerLangUpdate";
+import JobSeekerAbilityUpdate from "./JobSeekerAbilityUpdate";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,9 +49,9 @@ function JobSeekerProfile() {
   const classes = useStyles();
   const [jobSeeker, setJobSeeker] = useState({});
   const [jobSeekerPhoto, setJobSeekerPhoto] = useState({});
-  const [open, setOpen] = useState(false);
   const jobSeekerService = new JobSeekerService();
   const jobSeekerPhotoService = new JobSeekerPhotoService();
+  const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -59,22 +60,6 @@ function JobSeekerProfile() {
   const handleClose = () => {
     setOpen(false);
   };
-
-  const initialValues = {
-    firstName: `${jobSeeker.firstName}`,
-    lastName: `${jobSeeker.lastName}`,
-    email: `${jobSeeker.email}`,
-    dayOfBirth: `${jobSeeker.dayOfBirth}`,
-  };
-
-  const schema = Yup.object().shape({
-    firstName: Yup.string().required("First name is required."),
-    lastName: Yup.string().required("Last name is required."),
-    email: Yup.string()
-      .email("Please enter email.")
-      .required("Email is required."),
-    dayOfBirth: Yup.date().nullable().required("Birthday is require.d"),
-  });
 
   useEffect(() => {
     jobSeekerService
@@ -116,149 +101,12 @@ function JobSeekerProfile() {
             </span>
           </div>
         </div>
-        <Dialog
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="form-dialog-title"
-        >
-          <DialogTitle
-            className="jobSeeker__update__popup jobSeeker__update__popup--title"
-            id="form-dialog-title"
-          >
-            Update Profile
-          </DialogTitle>
-          <DialogContent className="jobSeeker__update__popup">
-            <DialogContentText className="jobSeeker__update__popup__text">
-              All your information must be entered.
-            </DialogContentText>
-            <Formik
-              initialValues={initialValues}
-              validationSchema={schema}
-              onSubmit={(values, { resetForm, setSubmitting }) => {
-                setTimeout(() => {
-                  setSubmitting(false);
-                  resetForm();
-                }, 2000);
-                console.log(values);
-                let jobSeekerUpdate = {
-                  firstName: values.firstName,
-                  lastName: values.lastName,
-                  email: values.email,
-                  dayOfBirth: values.dayOfBirth,
-                };
-
-                jobSeekerService
-                  .update(3, jobSeekerUpdate)
-                  .then((result) => console.log(result.data));
-              }}
-            >
-              {({ dirty, isSubmitting, handleSubmit, setFieldValue }) => (
-                <form onSubmit={handleSubmit}>
-                  <div className="jobSeeker__update__body">
-                    <div className="jobSeeker__update__fnAndln">
-                      <div className="jobSeeker__update__fn">
-                        <label className="label" htmlFor="firstName">
-                          First Name:
-                        </label>
-                        <JobHubTextInput
-                          id="firstName"
-                          name="firstName"
-                          placeholder={jobSeeker.firstName}
-                          type="text"
-                        />
-                      </div>
-                      <div className="jobSeeker__update__ln">
-                        <label className="label" htmlFor="lastName">
-                          Last Name:
-                        </label>
-                        <JobHubTextInput
-                          id="lastName"
-                          name="lastName"
-                          placeholder={jobSeeker.lastName}
-                          type="text"
-                        />
-                      </div>
-                    </div>
-                    <div className="jobSeeker__update__email">
-                      <label className="label" htmlFor="email">
-                        Last Name:
-                      </label>
-                      <JobHubTextInput
-                        id="email"
-                        name="email"
-                        placeholder={jobSeeker.email}
-                        type="text"
-                        large="true"
-                      />
-                    </div>
-                    <div className="jobSeeker__update__birthday">
-                      <label className="label" htmlFor="dayOfBirth">
-                        Birthday:
-                      </label>
-                      <JobHubTextInput
-                        id="dayOfBirth"
-                        name="dayOfBirth"
-                        placeholder="YYYY-MM-DD"
-                        type="text"
-                        large="true"
-                      />
-                    </div>
-                    <DialogActions>
-                      <Button
-                        startIcon={<CancelIcon />}
-                        onClick={handleClose}
-                        className="jobHub__button--submit"
-                      >
-                        Close
-                      </Button>
-                      <Button
-                        type="submit"
-                        startIcon={<SaveIcon />}
-                        disabled={!dirty || isSubmitting}
-                        variant="contained"
-                        className="jobHub__button--submit"
-                      >
-                        Update
-                      </Button>
-                    </DialogActions>
-                  </div>
-                </form>
-              )}
-            </Formik>
-          </DialogContent>
-        </Dialog>
-        <Button
-          startIcon={<SaveIcon />}
-          variant="contained"
-          className="jobHub__button--submit"
-          onClick={handleClickOpen}
-        >
-          Update
-        </Button>
+        <JobSeekerProfileUpdate />
         <JobSeekerProfileSocial />
         <div className="jobSeeker__body__various__information">
-          <div className="jobSeeker__body__vi jobSeeker__body__vi--languages">
-            <div className="jobSeeker__body__vi__header">
-              <div className="jobSeeker__body__vi__header--title">
-                <LanguageIcon />
-                <b>Languages</b>
-              </div>
-              <IconButton>
-                <AddCircleIcon className="vi__add" />
-              </IconButton>
-            </div>
-          </div>
-          <div className="jobSeeker__body__vi jobSeeker__body__vi--abilities">
-            <div className="jobSeeker__body__vi__header">
-              <div className="jobSeeker__body__vi__header--title">
-                <EmojiObjectsIcon />
-                <b>Abilities</b>
-              </div>
-              <IconButton>
-                <AddCircleIcon className="vi__add" />
-              </IconButton>
-            </div>
-          </div>
+          <JobSeekerLangUpdate />
+          <div className="space"></div>
+          <JobSeekerAbilityUpdate />
         </div>
       </div>
       <div className="jobSeekerProfile__options">

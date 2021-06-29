@@ -15,6 +15,10 @@ export default class JobSeekerAbilityService {
   }
 
   add(jobSeekerAbility) {
-    return axios.post(`${this.apiUrl}add`, {});
+    return axios.post(`${this.apiUrl}add`, jobSeekerAbility);
+  }
+
+  delete(jobSeekerAbilityId) {
+    return axios.delete(`${this.apiUrl}delete?jobSeekerAbilityId=${jobSeekerAbilityId}`);
   }
 }

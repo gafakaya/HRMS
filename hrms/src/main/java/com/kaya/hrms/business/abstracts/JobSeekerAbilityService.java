@@ -13,5 +13,7 @@ public interface JobSeekerAbilityService {
 	DataResult<List<JobSeekerAbility>> getByJobSeeker_id(int jobSeekerId);
 	
 	Result add(JobSeekerAbility jobSeekerAbility);
+	
+	Result delete(int jobSeekerAbilityId);
 
 }
