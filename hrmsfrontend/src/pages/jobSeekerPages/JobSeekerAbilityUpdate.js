@@ -159,7 +159,7 @@ function JobSeekerAbilityUpdate() {
                     variant="contained"
                     className="jobHub__button--submit"
                   >
-                    Update
+                    Add
                   </Button>
                 </DialogActions>
               </div>

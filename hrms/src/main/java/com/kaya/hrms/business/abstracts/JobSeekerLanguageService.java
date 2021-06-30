@@ -11,7 +11,9 @@ public interface JobSeekerLanguageService {
 	DataResult<List<JobSeekerLanguage>> getAll();
 	
 	DataResult<List<JobSeekerLanguage>> getByJobSeeker_id(int jobSeekerId);
-	
+
 	Result add(JobSeekerLanguage jobSeekerLanguage);
+	
+	Result delete(int jobSeekerLanguageId);
 	
 }

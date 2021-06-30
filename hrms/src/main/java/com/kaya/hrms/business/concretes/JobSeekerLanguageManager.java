@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kaya.hrms.business.abstracts.JobSeekerLanguageService;
+import com.kaya.hrms.business.constants.SystemMessages;
 import com.kaya.hrms.core.utilities.results.DataResult;
 import com.kaya.hrms.core.utilities.results.Result;
 import com.kaya.hrms.core.utilities.results.SuccessDataResult;
@@ -39,6 +40,12 @@ public class JobSeekerLanguageManager implements JobSeekerLanguageService {
 	public Result add(JobSeekerLanguage jobSeekerLanguage) {
 		this.jobSeekerLanguageDao.save(jobSeekerLanguage);
 		return new SuccessResult();
+	}
+
+	@Override
+	public Result delete(int jobSeekerLanguageId) {
+		this.jobSeekerLanguageDao.deleteById(jobSeekerLanguageId);
+		return new SuccessResult(SystemMessages.Crud.DELETED);
 	}
 
 

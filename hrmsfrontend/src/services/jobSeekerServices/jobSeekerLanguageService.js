@@ -15,6 +15,10 @@ export default class JobSeekerLanguageService{
   }
 
   add(jobSeekerLanguage) {
-    return axios.post(`${this.apiUrl}add`, {});
+    return axios.post(`${this.apiUrl}add`, jobSeekerLanguage);
+  }
+
+  delete(jobSeekerLanguageId) {
+    return axios.delete(`${this.apiUrl}delete?jobSeekerLanguageId=${jobSeekerLanguageId}`);
   }
 }

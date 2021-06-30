@@ -1,5 +1,4 @@
 import axios from "axios";
-
 export default class LanguageLevelService {
   constructor() {
     this.apiUrl =
